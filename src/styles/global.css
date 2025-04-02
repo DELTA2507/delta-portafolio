@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+    --color-text: #FFFFFF;
+    --color-background: #000000;
+    --color-background_secondary: #3E3939;
+    --color-primary: #8E1616;
+    --color-secondary: #E23C52;
+    --color-accent: #E52D2A;
+}
+
+html {
+    font-family: "Onest Variable", system-ui, sans-serif;
+    color: var(--color-text);
+    background: linear-gradient(
+        180deg,
+        var(--color-primary) 0%,
+        var(--color-background) 10%,
+        var(--color-background) 20%,
+        var(--color-background_secondary) 100%
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.clip_triangle_shape {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
