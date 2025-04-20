@@ -7,11 +7,11 @@ const links = [
 ]
 ---
 
-<nav id="container" class="flex justify-center items-center p-4 px-24">
-	<ul class="flex gap-x-14 px-5 py-2 bg-neutral-800 opacity-80 rounded-full shadow-md shadow-accent/50">
+<nav class="flex justify-center">
+	<ul class="w-full flex justify-evenly md:justify-center md:gap-10 p-5 bg-neutral-800">
 		{links.map(link => (
 			<li>
-				<a class="hover:text-accent hover:underline hover:underline-offset-8 transition-all text-neutral-300 font-semibold" 
+				<a class="hover:text-secondary hover:underline hover:underline-offset-8 transition-all text-neutral-300 font-semibold" 
 					rel="noopener noreferrer" 
 					target="_blank"
 					aria-label={link.name} 

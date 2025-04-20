@@ -1,0 +1,90 @@
+---
+import ProyectCard from "../proyectCard.astro";
+
+const proyects = [
+    {
+        title: "Proyect 1",
+        description: "Description of proyect 1",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect1",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 2",
+        description: "Description of proyect 2",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect2",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 3",
+        description: "Description of proyect 3",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect3",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 3",
+        description: "Description of proyect 3",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect3",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 3",
+        description: "Description of proyect 3",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect3",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 3",
+        description: "Description of proyect 3",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect3",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 3",
+        description: "Description of proyect 3",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect3",
+        stack: [
+            "supabase",
+        ]
+    },
+    {
+        title: "Proyect 3",
+        description: "Description of proyect 3",
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect3",
+        stack: [
+            "supabase",
+            "supabase",
+            "supabase",
+        ]
+    },
+    
+];
+---
+
+<section id="container" class="py-34">
+    <h1>Proyectos</h1>
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {proyects.map(proyect => (
+            <ProyectCard {...proyect} />
+        ))}
+    </section>
+</section>

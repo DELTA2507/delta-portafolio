@@ -1,0 +1,32 @@
+---
+import ExperienceEvent from "../ExperienceEvent.astro";
+
+const experience = [
+    {
+        role:"Desarrollador Web",
+        place:"WebDev",
+        date:"2023 - Actualidad",
+        description:"Desarrollador Web en la empresa de desarrollo web 'WebDev' Realice Lorem Impsum dolor sit amtet consetecteur dolis malariu gula mickolativo galinketovira."
+    },
+    {
+        role:"Desarrollador Web",
+        place:"WebDev",
+        date:"2023 - Actualidad",
+        description:"Desarrollador Web en la empresa de desarrollo web 'WebDev' Realice Lorem Impsum dolor sit amtet consetecteur dolis malariu gula mickolativo galinketovira."
+    },
+    {
+        role:"Desarrollador Web",
+        place:"WebDev",
+        date:"2023 - Actualidad",
+        description:"Desarrollador Web en la empresa de desarrollo web 'WebDev' Realice Lorem Impsum dolor sit amtet consetecteur dolis malariu gula mickolativo galinketovira."
+    }
+];
+---
+<section id="container">
+    <h1>Experiencia Laboral</h1>
+    <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
+        {experience.map(event => (
+            <ExperienceEvent {...event} />
+        ))}
+    </ol>
+</section>

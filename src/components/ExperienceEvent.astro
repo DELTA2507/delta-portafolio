@@ -1,0 +1,23 @@
+---
+const {date, role, place, description} = Astro.props;
+---
+
+<li class="mb-10 ms-4">
+    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-35 sm:mt-3.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-secondary"></div>
+    <div class="flex items-center justify-between">
+        <div>
+            <h3 class="text-2xl whitespace-nowrap font-semibold text-gray-900 dark:text-secondary">
+                {role}
+            </h3>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {place}
+            </h3>
+            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                {date}
+            </time>
+        </div>
+        <p class="text-base px-10 font-normal text-gray-500 dark:text-gray-400">
+            {description}
+        </p>
+    </div>
+</li>
