@@ -10,14 +10,14 @@ interface Props {
 const { title, description, image, stack, link } = Astro.props as Props;
 ---
 
-<div>
+<div class="select-none">
     <a 
         href={link} 
         target="_blank" 
         rel="noopener noreferrer"
         class="flex flex-col justify-center w-full h-full bg-neutral-800 rounded-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1"
     >
-        <img 
+        <img
             src={image} 
             alt={title} 
             class="w-full h-40 object-cover rounded-t-xl" 
@@ -33,7 +33,9 @@ const { title, description, image, stack, link } = Astro.props as Props;
                     />
                 ))}
             </div>
-            <p class="text-neutral-300">{description}</p>
+            <p class="text-neutral-300 text-sm">
+                {description}
+            </p>
         </div>
     </a>
 </div>

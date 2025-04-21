@@ -12,7 +12,8 @@
 html {
     font-family: "Onest Variable", system-ui, sans-serif;
     color: var(--color-text);
-    background: rgb(32, 32, 32)
+    background: rgb(32, 32, 32);
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,16 +30,28 @@ h1 {
 }
 
 /*CONTAINER ALIGNMENT*/
-#container {
+.container-element {
     padding-inline: 5vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
 @media (min-width: 1650px) {
-    #container {
+    .container-element {
         padding-inline: 50vh;
     }
 }
+/*CONTAINER ALIGNMENT*/
 
 .clip_triangle_shape {
     clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* Glassmorphism effect */
+.navbar-glass {
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
 }

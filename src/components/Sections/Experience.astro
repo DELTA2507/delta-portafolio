@@ -4,27 +4,39 @@ import ExperienceEvent from "../ExperienceEvent.astro";
 const experience = [
     {
         role:"Desarrollador Web",
-        place:"WebDev",
-        date:"2023 - Actualidad",
-        description:"Desarrollador Web en la empresa de desarrollo web 'WebDev' Realice Lorem Impsum dolor sit amtet consetecteur dolis malariu gula mickolativo galinketovira."
+        place:"Costa Rica",
+        date:"2025 - Actualidad",
+        stack: [
+            'supabase',
+            'astro',
+            'typescript',
+            'nextjs'
+        ],
+        description:"Retiro Profesional en el cual aproveche para expandir mis habilidades y conocimientos con distintas herramientas de desarrollo web tanto Frontend como Backend"
     },
     {
-        role:"Desarrollador Web",
-        place:"WebDev",
-        date:"2023 - Actualidad",
-        description:"Desarrollador Web en la empresa de desarrollo web 'WebDev' Realice Lorem Impsum dolor sit amtet consetecteur dolis malariu gula mickolativo galinketovira."
+        role:"Prácticante de Desarrollo Web",
+        place:"Cileto",
+        date:"Oct 2024 - Nov 2024 (2 Meses)",
+        stack: [
+            'supabase',
+            'firebase',
+            'typescript',
+            'react',
+            'nextjs',
+            'tailwindcss',
+            'git'
+        ],
+        description:"Realicé labores de desarrollo web en Frontend y Backend, con los leguajes y herramientas como React, Next.js, TypeScript, Tailwind.css, Supabase y Firebase. Aprendí a trabajar en equipo y a utilizar herramientas de control de versiones como Git y GitHub."
     },
-    {
-        role:"Desarrollador Web",
-        place:"WebDev",
-        date:"2023 - Actualidad",
-        description:"Desarrollador Web en la empresa de desarrollo web 'WebDev' Realice Lorem Impsum dolor sit amtet consetecteur dolis malariu gula mickolativo galinketovira."
-    }
 ];
 ---
-<section id="container">
-    <h1>Experiencia Laboral</h1>
-    <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
+<section id="experience" class="container-element space-y-10 bg-neutral-800">
+    <h1>
+        <i class="fa-solid fa-briefcase"></i>
+        Experiencia Laboral
+    </h1>
+    <ol class="relative border-s border-neutral-200 dark:border-neutral-700">                  
         {experience.map(event => (
             <ExperienceEvent {...event} />
         ))}

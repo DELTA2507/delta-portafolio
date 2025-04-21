@@ -1,0 +1,31 @@
+---
+import ProjectCard from "../ProjectCard.astro";
+
+const projects = [
+    {
+        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
+        link: "https://example.com/proyect1",
+        title: "iLists",
+        stack: [
+            'nextjs',
+            'typescript',
+            'react',
+            'supabase',
+            'tailwindcss'
+        ],
+        description: "'La solución a medida para tus listas de compras'. Una aplicación web para crear, gestionar y personalizar listas de compras. Donde el usuario tiene la capacidad de personalizar diversos aspectos de la aplicación, además de poder compartirla con otros usuarios."
+    },
+];
+---
+
+<section id="projects" class="container-element space-y-10">
+    <h1>
+        <i class="fa-solid fa-code"></i>
+        Proyectos
+    </h1>
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {projects.map(project => (
+            <ProjectCard {...project} />
+        ))}
+    </section>
+</section>
