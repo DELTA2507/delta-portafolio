@@ -19,7 +19,7 @@
 }
 
 html {
-    font-family: "Onest Variable", system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     color: var(--color-text);
     background: rgb(32, 32, 32);
     scroll-behavior: smooth;

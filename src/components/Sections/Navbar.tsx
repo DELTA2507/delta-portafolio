@@ -12,7 +12,7 @@ export default function Navbar () {
 				{links.map(link => (
 					<li key={link.name}>
 						<a
-							className="hover:text-secondary hover:underline hover:underline-offset-8 transition-all text-neutral-300 font-semibold"
+							className="hover:text-secondary hover:underline hover:underline-offset-8 transition-all text-neutral-300 sm:text-lg font-semibold"
 							href={link.href}
 							aria-label={link.name}
 						>
