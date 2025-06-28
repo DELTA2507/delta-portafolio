@@ -1,6 +1,5 @@
 import type { FormEvent } from "react"
 
-// src/components/ContactForm.tsx
 const encode = (text: string) => encodeURIComponent(text)
 const makeMailto = (email: string, subject: string, body: string) =>
   `mailto:${email}?subject=${encode(subject)}&body=${encode(body)}`
@@ -30,7 +29,7 @@ export default function ContactForm() {
       />
       <textarea
         name="message"
-        rows={3}
+        rows={5}
         placeholder="Mensaje"
         required
         className="bg-neutral-700 p-2 rounded-xl text-sm resize-none focus:outline-none focus:ring-2 focus:ring-secondary"

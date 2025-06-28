@@ -1,5 +1,6 @@
 ---
-import ExperienceEvent from "../ExperienceEvent.astro";
+import AnimatedTitle from "../components/AnimatedTitle";
+import ExperienceEvent from "../components/ExperienceEvent.astro";
 
 const experience = [
     {
@@ -33,11 +34,8 @@ const experience = [
 ];
 ---
 <section id="experience" class="container-element space-y-10 bg-neutral-900">
-    <h1>
-        <i class="fa-solid fa-briefcase"></i>
-        Experiencia Laboral
-    </h1>
-    <ol class="relative border-s border-neutral-200 dark:border-neutral-700">                  
+    <AnimatedTitle title="Experiencia" icon="fa-briefcase" client:load/>
+    <ol class="relative border-s border-neutral-700">           
         {experience.map(event => (
             <ExperienceEvent {...event} />
         ))}
