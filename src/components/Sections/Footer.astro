@@ -2,16 +2,21 @@
 import ContactForm from "../ContactForm.tsx"
 ---
 
-<footer id="contact" class="bg-neutral-800 text-white py-6 space-y-10">
-    <h1 class="text-center">Contacto</h1>
-    <div class="w-full flex justify-center">
-        <ContactForm client:only="react"/>
+<footer id="contact" class=" text-white py-6 space-y-10">
+  <h1 class="text-center">Contacto</h1>
+  <div class="flex justify-center items-center gap-20 max-w-full bg-white/10 backdrop-blur-xl py-20 px-10 shadow-lg border-secondary border-t-2 border-b-2 flex-col md:flex-row">
+    <p class="text-2xl leading-12 md:text-4xl max-w-md">
+      ¿Tienes una <span class="text-secondary font-bold">idea</span>? <br> 
+      ¿Algún <span class="text-secondary font-bold">proyecto soñado</span>? <br>
+      ¿Tal vez una <span class="text-secondary font-bold">página web en mente</span>?
+    </p>
+    <div class="max-w-xl w-full">
+      <ContactForm client:only="react" />
     </div>
-    <div class="mx-auto text-left text-xs">
-    <div class="flex justify-center gap-4 py-5">
-        <p>&copy; 2025 Joseph Ugalde Murillo and DELTA D&D All rights reserved.</p>
-        <p>&copy; 2025 Delta Development and Design</p>
-        <p>&copy; 2025 Joseph Ugalde Murillo</p>
-    </div>
+  </div>
+  <div class="flex justify-center gap-4 py-5 text-sm text-neutral-400 flex-wrap text-center">
+    <p>&copy; 2025 Joseph Ugalde Murillo and DELTA D&D</p>
+    <p>&copy; 2025 Delta Development and Design</p>
+    <p>&copy; 2025 Joseph Ugalde Murillo</p>
   </div>
 </footer>

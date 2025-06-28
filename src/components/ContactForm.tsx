@@ -18,21 +18,22 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-md flex flex-col gap-2 bg-neutral-900 text-white p-4 rounded-2xl shadow-lg"
+      className="w-full flex flex-col gap-2 bg-neutral-800 text-white p-5 rounded-2xl shadow-inner shadow-red-500"
     >
+      <h3 className="text-2xl text-center font-semibold">Envíanos un mensaje</h3>
       <input
         name="subject"
         type="text"
         placeholder="Asunto"
         required
-        className="bg-neutral-800 p-2 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
+        className="bg-neutral-700 p-2 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
       />
       <textarea
         name="message"
         rows={3}
         placeholder="Mensaje"
         required
-        className="bg-neutral-800 p-2 rounded-xl text-sm resize-none focus:outline-none focus:ring-2 focus:ring-secondary"
+        className="bg-neutral-700 p-2 rounded-xl text-sm resize-none focus:outline-none focus:ring-2 focus:ring-secondary"
       />
       <button
         type="submit"
