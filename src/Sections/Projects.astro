@@ -1,6 +1,6 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
 import AnimatedTitle from "../components/AnimatedTitle";
+import AnimatedStaggeredContainerProjects from "../components/AnimatedStaggeredContainerProjects";
 
 const projects = [
     {
@@ -47,9 +47,5 @@ const projects = [
 
 <section id="projects" class="container-element space-y-10">
     <AnimatedTitle title="Proyectos" icon="fa-code" client:load/>
-    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-        {projects.map(project => (
-            <ProjectCard {...project} />
-        ))}
-    </section>
+    <AnimatedStaggeredContainerProjects proyects={projects} client:load>
 </section>
