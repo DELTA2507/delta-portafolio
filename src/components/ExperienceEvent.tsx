@@ -1,13 +1,14 @@
 interface ExperienceEventProps {
     role: string;
     place: string;
+    placeLogo?: string;
     link?: string;
     date: string;
     stack: string[];
     description: string;
 }
 
-export default function ExperienceEvent({role, place, link, date, stack, description}: ExperienceEventProps) {
+export default function ExperienceEvent({role, place, placeLogo, link, date, stack, description}: ExperienceEventProps) {
   return (
     <li className="mb-10 ms-4">
       <div className="absolute w-3 h-3 rounded-full mt-3.5 -start-1.5 border border-neutral-900 bg-secondary"></div>
@@ -16,9 +17,19 @@ export default function ExperienceEvent({role, place, link, date, stack, descrip
             <h3 className="text-2xl whitespace-nowrap font-semibold text-secondary">
               {role}
             </h3>
-            <a href={link} className="text-xl font-semibold text-white">
-              {place}
-            </a>
+            {placeLogo ? (
+              <a href={link} className="block w-32 max-w-full aspect-[3/1] mt-2">
+                <img
+                  src={placeLogo}
+                  alt={place}
+                  className="w-full h-full object-contain"
+                />
+              </a>
+            ) : (
+              <a href={link} className="text-xl font-semibold text-white">
+                {place}
+              </a>
+            )}
             <br/>
             <time className="mb-1 text-sm font-normal leading-none text-neutral-400">
               {date}
