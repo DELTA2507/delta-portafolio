@@ -5,17 +5,17 @@ import { useRef } from "react"
 import ProjectCard from "./ProjectCard"
 
 
-interface ProyectsAnimatedContainerProps {
-    proyects: any[]
+interface ProjectsAnimatedContainerProps {
+    projects: any[]
 }
 
-export default function ProyectsAnimatedContainer({ proyects }: ProyectsAnimatedContainerProps) {
-    const proyectRef = useRef<HTMLDivElement>(null)
-    
+export default function ProjectsAnimatedContainer({ projects }: ProjectsAnimatedContainerProps) {
+    const projectsRef = useRef<HTMLDivElement>(null)
+
     useGSAP(() => {
-        if (!proyectRef.current) return
+        if (!projectsRef.current) return
         gsap.registerPlugin(ScrollTrigger)
-        const items = proyectRef.current.querySelectorAll("div.select-none") // cada card
+        const items = projectsRef.current.querySelectorAll("div.select-none") // cada card
         gsap.fromTo(
         items,
         { opacity: 0, y: 50 },
@@ -26,7 +26,7 @@ export default function ProyectsAnimatedContainer({ proyects }: ProyectsAnimated
             ease: "power2.out",
             stagger: 0.2,
             scrollTrigger: {
-            trigger: proyectRef.current,
+            trigger: projectsRef.current,
             start: "top 70%",
             toggleActions: "play none none none"
             }
@@ -36,10 +36,10 @@ export default function ProyectsAnimatedContainer({ proyects }: ProyectsAnimated
 
   return (
     <section
-      ref={proyectRef}
+      ref={projectsRef}
       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10"
     >
-      {proyects.map((project, index) => (
+      {projects.map((project, index) => (
         <ProjectCard key={index} {...project} />
       ))}
     </section>

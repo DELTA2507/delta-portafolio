@@ -1,38 +1,7 @@
 ---
 import AnimatedStaggeredContainerExperience from "../components/AnimatedStaggeredContainerExperience";
 import AnimatedTitle from "../components/AnimatedTitle";
-
-const experience = [
-    {
-        role:"Desarrollador Web",
-        place:"Costa Rica",
-        date:"2025 - Actualidad",
-        stack: [
-            'supabase',
-            'astro',
-            'typescript',
-            'nextjs'
-        ],
-        description:"Retiro Profesional en el cual aproveche para expandir mis habilidades y conocimientos con distintas herramientas de desarrollo web tanto Frontend como Backend"
-    },
-    {
-        role:"Prácticante de Desarrollo Web",
-        place:"Cileto",
-        placeLogo:"/companyLogos/cileto.svg",
-        link:"https://cileto.com/",
-        date:"Oct 2024 - Nov 2024 (2 Meses)",
-        stack: [
-            'supabase',
-            'firebase',
-            'typescript',
-            'react',
-            'nextjs',
-            'tailwindcss',
-            'git'
-        ],
-        description:"Realicé labores de desarrollo web en Frontend y Backend, con los leguajes y herramientas como React, Next.js, TypeScript, Tailwind.css, Supabase y Firebase. Aprendí a trabajar en equipo y a utilizar herramientas de control de versiones como Git y GitHub."
-    },
-];
+import experience from "../data/experience";
 ---
 <section id="experience" class="container-element space-y-10 bg-neutral-900">
     <AnimatedTitle title="Experiencia" icon="fa-briefcase" client:load/>

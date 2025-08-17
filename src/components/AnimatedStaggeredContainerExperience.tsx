@@ -5,11 +5,11 @@ import { useRef } from "react"
 import ExperienceEvent from "./ExperienceEvent"
 
 
-interface ProyectsAnimatedContainerProps {
+interface ProjectsAnimatedContainerProps {
     experience: any[]
 }
 
-export default function ProyectsAnimatedContainer({ experience }: ProyectsAnimatedContainerProps) {
+export default function ProjectsAnimatedContainer({ experience }: ProjectsAnimatedContainerProps) {
     const eventRef = useRef<HTMLOListElement>(null)
     
     useGSAP(() => {
