@@ -24,7 +24,7 @@ export default function ProjectsAnimatedContainer({ experience }: ProjectsAnimat
             y: 0,
             duration: 1,
             ease: "power2.out",
-            stagger: 0.2,
+            stagger: 0.1,
             scrollTrigger: {
             trigger: eventRef.current,
             start: "top 70%",

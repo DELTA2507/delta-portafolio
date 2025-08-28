@@ -1,0 +1,78 @@
+:root {
+  --neon-a: #ff2d2d;
+  --neon-b: #ff4d6d;
+  --neon-c: #ff7a3d;
+}
+
+.neon-card {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.neon-card:hover {
+  transform: translateY(-5px) skewY(3deg) rotateX(6deg) rotateY(-6deg);
+}
+
+.neon-card > div {
+  border-radius: inherit;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.neon-card {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+.neon-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 60% at 50% 0%, var(--neon-a) 0%, transparent 60%),
+              radial-gradient(80% 80% at 100% 100%, var(--neon-b) 0%, transparent 70%);
+  background-size: 200% 200%;
+  filter: blur(20px);
+  opacity: 1; /* estado default */
+  transition: opacity 0.5s ease;
+}
+
+.neon-card:hover::before {
+  opacity: 0; /* default se desvanece */
+}
+
+.neon-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 60% at 50% 0%, var(--neon-a) 0%, transparent 60%),
+              radial-gradient(80% 80% at 100% 100%, var(--neon-b) 0%, transparent 70%);
+  background-size: 200% 200%;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: glow-shift 5s ease-in-out infinite;
+  animation-play-state: paused; /* animación detenida por defecto */
+}
+
+.neon-card:hover::after {
+  opacity: 0.6;
+  animation-play-state: running; /* arranca animación al hover */
+}
+
+@keyframes glow-shift {
+  0% { background-position: 0% 50%, 100% 50%; }
+  50% { background-position: 100% 50%, 0% 50%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
