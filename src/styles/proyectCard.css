@@ -6,30 +6,46 @@
 
 .neon-card {
   position: relative;
-  border-radius: 1rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   overflow: hidden;
-  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+  transition: all 0.5s cubic-bezier(.2,.8,.2,1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .neon-card:hover {
-  transform: translateY(-5px) skewY(3deg) rotateX(6deg) rotateY(-6deg);
+  border: 2px solid rgba(255, 255, 255, 0.387);
 }
 
-.neon-card > div {
-  border-radius: inherit;
+.card-inner {
+  max-height: 24rem;
   overflow: hidden;
-  position: relative;
-  z-index: 1;
+  transition: max-height 0.5s ease;
 }
 
-.neon-card {
-  position: relative;
-  border-radius: 1rem;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
+.neon-card:hover .card-inner {
+  max-height: 40rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  max-height: 5.5rem; /* unas 4 líneas */
   overflow: hidden;
+  transition: max-height 1s ease;
+  -webkit-line-clamp: unset; /* quitar line-clamp, usamos max-height */
+}
+
+.neon-card:hover .description {
+  max-height: 20rem; /* se expande al hover */
+}
+
+.card-footer {
+  margin-top: auto; 
+  flex-shrink: 0;
 }
 
 .neon-card::before {
@@ -47,7 +63,7 @@
 }
 
 .neon-card:hover::before {
-  opacity: 0; /* default se desvanece */
+  opacity: 0;
 }
 
 .neon-card::after {
@@ -62,13 +78,12 @@
   filter: blur(20px);
   opacity: 0;
   transition: opacity 0.5s ease;
-  animation: glow-shift 5s ease-in-out infinite;
-  animation-play-state: paused; /* animación detenida por defecto */
+  animation: glow-shift 10s ease-in-out infinite;
+  animation-play-state: paused;
 }
 
 .neon-card:hover::after {
   opacity: 0.6;
-  animation-play-state: running; /* arranca animación al hover */
 }
 
 @keyframes glow-shift {

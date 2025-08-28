@@ -21,7 +21,7 @@ export default function ExperienceEvent({role, place, placeLogo, link, date, sta
       {/*TRIANGLE*/}
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
         <div className="md:flex-1">
-          <h3 className="text-2xl whitespace-nowrap font-semibold text-secondary">
+          <h3 className="text-2xl font-semibold text-secondary break-words md:whitespace-normal">
             {role}
           </h3>
           {placeLogo ? (
