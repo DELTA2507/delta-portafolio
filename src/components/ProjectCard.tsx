@@ -1,14 +1,16 @@
 import { useRef } from "react";
 
 interface Props {
-  title: string;
-  description: string;
-  image: string;
-  stack: string[];
-  link: string;
+    ownerLogo: string,
+    ownerLink: string,
+    title: string;
+    shortDescription: string;
+    image: string;
+    stack: string[];
+    link: string;
 }
 
-export default function ProjectCard({ title, description, image, stack, link }: Props) {
+export default function ProjectCard({ ownerLogo, ownerLink, title, shortDescription, image, stack, link }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -19,8 +21,8 @@ export default function ProjectCard({ title, description, image, stack, link }: 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateY = ((x / rect.width) - 0.5) * 20; 
-    const rotateX = ((0.5 - y / rect.height)) * 20;
+    const rotateY = ((x / rect.width) - 0.5) * 10; 
+    const rotateX = ((0.5 - y / rect.height)) * 10;
 
     card.style.transform = `translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
@@ -39,8 +41,33 @@ export default function ProjectCard({ title, description, image, stack, link }: 
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
+            {/* Badge flotante */}
+            {ownerLogo && (
+                <a
+                    href={ownerLink}
+                    className="absolute top-2 left-2 w-11 h-11 z-100 rounded-full overflow-hidden bg-black border-2 transition-all duration-300 flex items-center justify-center"
+                    style={{ borderColor: 'transparent' }}
+                    onMouseEnter={(e) => {
+                        const badge = e.currentTarget;
+                        badge.style.borderColor = '#ff4d6d';
+                    }}
+                    onMouseLeave={(e) => {
+                        const badge = e.currentTarget;
+                        badge.style.borderColor = 'transparent';
+                    }}
+                >
+                    <img
+                        src={ownerLogo}
+                        alt="Owner Logo"
+                        className="w-full h-full object-contain"
+                    />
+                </a>
+            )}
+
             <div className="card-inner overflow-hidden bg-white/5 backdrop-blur-xl rounded-t-2xl flex flex-col">
-                <img src={image} alt={title} className="w-full h-44 object-cover" />
+                <a href={link}>
+                    <img src={image} alt={title} className="w-full h-44 object-cover" />
+                </a>
                 <div className="p-4 card-content flex flex-col">
                     <div>
                     <h3 className="text-2xl font-bold tracking-wide text-neutral-100 drop-shadow break-words overflow-hidden">
@@ -57,7 +84,7 @@ export default function ProjectCard({ title, description, image, stack, link }: 
                         ))}
                     </div>
                     <p className="text-neutral-300/90 text-sm leading-relaxed description mt-5">
-                        {description}
+                        {shortDescription}
                     </p>
                     </div>
                 </div>
@@ -67,11 +94,9 @@ export default function ProjectCard({ title, description, image, stack, link }: 
             <div className="card-footer bg-white/5 backdrop-blur-xl rounded-b-2xl p-4 mt-[-1px]">
                 <a
                     href={link}
-                    target="_blank"
-                    rel="noreferrer"
                     className="text-red-300 hover:text-red-200 inline-flex items-center gap-2 text-sm font-medium tracking-wide w-full h-full"
                     >
-                    Visitar
+                    Ver más
                     <i className="fa-solid fa-external-link transition-transform group-hover:translate-x-0.5"></i>
                 </a>
             </div>

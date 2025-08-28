@@ -6,7 +6,7 @@ import ProjectCard from "./ProjectCard"
 
 
 interface ProjectsAnimatedContainerProps {
-    projects: any[]
+  projects: any[]
 }
 
 export default function ProjectsAnimatedContainer({ projects }: ProjectsAnimatedContainerProps) {

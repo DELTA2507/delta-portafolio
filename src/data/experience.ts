@@ -6,12 +6,14 @@ const experience = [
         link:"https://ucenfotec.ac.cr/",
         date:"May 2025 - Actualidad",
         stack: [
-            'supabase',
-            'astro',
-            'typescript',
-            'nextjs'
+            'mongodb',
+            'express',
+            'ejs',
+            'javascript',
+            'java',
+            'python'
         ],
-        description:"Al mismo tiempo que estudio, he trabajado en proyectos personales y colaborativos que me han permitido aplicar mis conocimientos en situaciones reales de desarrollo de página web y software."
+        description:"Al mismo tiempo que me formé profesionalmente en CENFOTEC, trabajé en proyectos personales y colaborativos que me han permitido aplicar mis conocimientos en situaciones reales de desarrollo de página web y software en general. A la vez que aprendí nuevas tecnologías y afiné mis habilidades."
     },
     {
         role:"Desarrollador Web",
