@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/*CONTAINER ALIGNMENT*/
+.container-element {
+    padding-inline: 5vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+  }
+  
+@media (min-width: 1650px) {
+    .container-element {
+        padding-inline: 50vh;
+    }
+}
+/*CONTAINER ALIGNMENT*/
+
+.clip_triangle_shape {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* Glassmorphism effect */
+.navbar-glass {
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}

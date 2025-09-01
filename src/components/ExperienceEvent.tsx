@@ -25,7 +25,7 @@ export default function ExperienceEvent({role, place, placeLogo, link, date, sta
             {role}
           </h3>
           {placeLogo ? (
-            <a href={link} className="block w-36 max-w-full aspect-[3/1] mt-2 hover:brightness-150">
+            <a href={link} className="block w-36 max-w-full aspect-[3/1] mt-2 hover:scale-110 transition-all ease-in-out">
               <img
                 src={placeLogo}
                 alt={place}

@@ -1,10 +1,11 @@
 const projects = [
     {
+        proyectLogo: "/experienceLogos/delta-development-and-design.png",
         ownerLogo: "/experienceLogos/delta-development-and-design.png",
-        image: "https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg",
-        images : [],
+        images : ['https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg'],
         link: "https://example.com/proyect1",
         title: "iLists",
+        slug: "ilists",
         stack: [
             'nextjs',
             'typescript',
@@ -16,11 +17,12 @@ const projects = [
         fullDescription: ""
     },
     {
+        proyectLogo: "/experienceLogos/delta-development-and-design.png",
         ownerLogo: "/experienceLogos/delta-development-and-design.png",
-        image: "/public/proyectImages/nucleo-desamparados.png",
-        images : [],
+        images : ['/proyectImages/nucleo-desamparados.png'],
         link: "https://nucleo-desamparados.vercel.app/",
         title: "Núcleo Desamparados",
+        slug: "nucleo-desamparados",
         stack: [
             'html',
             'css',
@@ -33,12 +35,13 @@ const projects = [
         fullDescription: "Una página desarrollada en 2 semanas junto con otros compañeros como parte de un proyecto universitario. Y dirigida a la comunidad de Desamparados para mejorar la comunicación y el acceso a la información acerca de los emprendimientos locales, noticias, eventos, horarios de bus, etc. Me encargué de la mayor parte del desarrollo de la aplicación, tanto la construcción de la base de datos y la conexión al backend, como la integración del diseño del frontend, validaciones, pruebas y despliegue."
     },
     {
+        proyectLogo: "/experienceLogos/biblionerd.svg",
         ownerLogo: "/experienceLogos/cileto-responsive.svg",
         ownerLink: "https://cileto.com",
-        image: "/public/proyectImages/biblionerd.jpg",
-        images : [],
+        images : ['/proyectImages/biblionerd.jpg'],
         link: "https://biblionerd.com/",
         title: "Biblionerd",
+        slug: "biblionerd",
         stack: [
             'nextjs',
             'typescript',

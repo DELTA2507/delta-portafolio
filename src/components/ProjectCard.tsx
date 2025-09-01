@@ -1,16 +1,17 @@
 import { useRef } from "react";
 
 interface Props {
-    ownerLogo: string,
-    ownerLink: string,
+    ownerLogo: string;
+    ownerLink: string;
     title: string;
+    slug: string;
     shortDescription: string;
-    image: string;
+    images: string[];
     stack: string[];
     link: string;
 }
 
-export default function ProjectCard({ ownerLogo, ownerLink, title, shortDescription, image, stack, link }: Props) {
+export default function ProjectCard({ ownerLogo, ownerLink, title, slug, shortDescription, images, stack, link }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -66,7 +67,7 @@ export default function ProjectCard({ ownerLogo, ownerLink, title, shortDescript
 
             <div className="card-inner overflow-hidden bg-white/5 backdrop-blur-xl rounded-t-2xl flex flex-col">
                 <a href={link}>
-                    <img src={image} alt={title} className="w-full h-44 object-cover" />
+                    <img src={images[0]} alt={title} className="w-full h-44 object-cover" />
                 </a>
                 <div className="p-4 card-content flex flex-col">
                     <div>
@@ -93,7 +94,7 @@ export default function ProjectCard({ ownerLogo, ownerLink, title, shortDescript
             {/* Footer separado pero con mismo fondo para no quedar huérfano */}
             <div className="card-footer bg-white/5 backdrop-blur-xl rounded-b-2xl p-4 mt-[-1px]">
                 <a
-                    href={link}
+                    href={`/${slug}`}
                     className="text-red-300 hover:text-red-200 inline-flex items-center gap-2 text-sm font-medium tracking-wide w-full h-full"
                     >
                     Ver más

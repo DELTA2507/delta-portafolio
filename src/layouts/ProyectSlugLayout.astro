@@ -1,0 +1,21 @@
+---
+import '../../src/styles/proyectSlugLayout.css'
+import '../../src/styles/carousel.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+
+const { title } = Astro.props || "Portafolio Joseph UM | Desarrollador Web e Ingeniero de Software";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
