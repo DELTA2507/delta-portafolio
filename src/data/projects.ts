@@ -3,7 +3,7 @@ const projects = [
         projectLogo: "/experienceLogos/delta-development-and-design.png",
         ownerLogo: "/experienceLogos/delta-development-and-design.png",
         images : ['https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg'],
-        link: "https://example.com/proyect1",
+        link: "https://example.com/project1",
         title: "iLists",
         slug: "ilists",
         stack: [
@@ -19,7 +19,7 @@ const projects = [
     {
         projectLogo: "/experienceLogos/delta-development-and-design.png",
         ownerLogo: "/experienceLogos/delta-development-and-design.png",
-        images : ['/proyectImages/nucleo-desamparados.png'],
+        images : ['/projectImages/nucleo-desamparados.png'],
         link: "https://nucleo-desamparados.vercel.app/",
         title: "Núcleo Desamparados",
         slug: "nucleo-desamparados",
@@ -38,7 +38,7 @@ const projects = [
         projectLogo: "/experienceLogos/biblionerd.svg",
         ownerLogo: "/experienceLogos/cileto-responsive.svg",
         ownerLink: "https://cileto.com",
-        images : ['/proyectImages/biblionerd.jpg'],
+        images : ['/projectImages/biblionerd.jpg'],
         link: "https://biblionerd.com/",
         title: "Biblionerd",
         slug: "biblionerd",

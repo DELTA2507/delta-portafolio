@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 h1 {
     font-size: 2.5rem;
     font-weight: 600;
@@ -9,15 +13,16 @@ h1 {
 
 /*CONTAINER ALIGNMENT*/
 .container-element {
-    padding-inline: 5vh;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 15rem;
-    padding-bottom: 15rem;
-  }
+  padding-inline: 5vh;
+  min-height: 100vh;        /* asegura cubrir toda la pantalla */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 5rem;        /* ajusta a algo más razonable */
+  padding-bottom: 5rem;
+  box-sizing: border-box;   /* importante para que padding no sume extra */
+}
   
 @media (min-width: 1650px) {
     .container-element {
