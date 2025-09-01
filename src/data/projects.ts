@@ -1,6 +1,6 @@
 const projects = [
     {
-        proyectLogo: "/experienceLogos/delta-development-and-design.png",
+        projectLogo: "/experienceLogos/delta-development-and-design.png",
         ownerLogo: "/experienceLogos/delta-development-and-design.png",
         images : ['https://www.hubspot.com/hs-fs/hubfs/lemon%20(1).jpg?width=650&height=425&name=lemon%20(1).jpg'],
         link: "https://example.com/proyect1",
@@ -17,7 +17,7 @@ const projects = [
         fullDescription: ""
     },
     {
-        proyectLogo: "/experienceLogos/delta-development-and-design.png",
+        projectLogo: "/experienceLogos/delta-development-and-design.png",
         ownerLogo: "/experienceLogos/delta-development-and-design.png",
         images : ['/proyectImages/nucleo-desamparados.png'],
         link: "https://nucleo-desamparados.vercel.app/",
@@ -35,7 +35,7 @@ const projects = [
         fullDescription: "Una página desarrollada en 2 semanas junto con otros compañeros como parte de un proyecto universitario. Y dirigida a la comunidad de Desamparados para mejorar la comunicación y el acceso a la información acerca de los emprendimientos locales, noticias, eventos, horarios de bus, etc. Me encargué de la mayor parte del desarrollo de la aplicación, tanto la construcción de la base de datos y la conexión al backend, como la integración del diseño del frontend, validaciones, pruebas y despliegue."
     },
     {
-        proyectLogo: "/experienceLogos/biblionerd.svg",
+        projectLogo: "/experienceLogos/biblionerd.svg",
         ownerLogo: "/experienceLogos/cileto-responsive.svg",
         ownerLink: "https://cileto.com",
         images : ['/proyectImages/biblionerd.jpg'],

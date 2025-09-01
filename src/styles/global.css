@@ -37,9 +37,17 @@ body {
     position: relative;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    letter-spacing: 5px;
-    color: var(--color-text);
+/*FIX SIDEBAR APPEARING ON MOBILE*/
+
+@media (max-width: 800px) {
+    body {
+      -ms-overflow-style: none;  /* IE y Edge */
+      scrollbar-width: none;     /* Firefox */
+      overflow-y: scroll;        /* mantiene el scroll pero oculta la barra */
+      overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    }
+    
+    body::-webkit-scrollbar {
+      display: none;             /* Chrome, Safari, Opera */
+    }
 }

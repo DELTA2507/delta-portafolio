@@ -1,8 +1,8 @@
 ---
-import ProyectSlugLayout from '../layouts/ProyectSlugLayout.astro';
+import ProjectSlugLayout from '../layouts/ProjectSlugLayout.astro';
 import projects from "../data/projects";
-import Carousel from '../components/Carousel.tsx';
-import Breadcrumbs from '../components/Breadcrumbs.tsx';
+import Carousel from '../components/Carousel';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export async function getStaticPaths() {
   return projects.map((project) => ({
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 ---
 
-<ProyectSlugLayout title={project.title}>
+<ProjectSlugLayout title={project.title}>
     <div class="max-w-7xl mx-auto px-4 py-12">
       <Breadcrumbs
           paths={[
@@ -71,7 +71,7 @@ const { project } = Astro.props;
         <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
             <div class="lg:sticky top-6 flex flex-col gap-6">
                 <div class="project-logo rounded-xl overflow-hidden py-10">
-                    <img src={project.proyectLogo} alt="Project Logo" />
+                    <img src={project.projectLogo} alt="Project Logo" />
                 </div>
 
                 <div class="project-cta bg-white/5 backdrop-blur-xl rounded-2xl p-6 flex flex-col gap-4">
@@ -86,4 +86,4 @@ const { project } = Astro.props;
         </div>
     </div>
   </div>
-</ProyectSlugLayout>
+</ProjectSlugLayout>
