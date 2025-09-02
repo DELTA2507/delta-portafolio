@@ -45,7 +45,7 @@ export default function ExperienceEvent({role, place, placeLogo, link, date, sta
               {stack.map(stackIcon => (
                   <img 
                       className="w-8 h-8 rounded-full" 
-                      src={`/stackIcons/${stackIcon}.svg`} 
+                      src={`/stack-icons/${stackIcon}.svg`} 
                       alt="Rounded icon" 
                   />
               ))}

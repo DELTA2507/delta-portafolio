@@ -79,7 +79,7 @@ export default function ProjectCard({ ownerLogo, ownerLink, title, slug, shortDe
                         <img
                             key={stackIcon}
                             className="w-8 h-8 rounded-full transition-transform duration-300 group-hover:scale-105"
-                            src={`/stackIcons/${stackIcon}.svg`}
+                            src={`/stack-icons/${stackIcon}.svg`}
                             alt={stackIcon}
                         />
                         ))}
@@ -94,7 +94,7 @@ export default function ProjectCard({ ownerLogo, ownerLink, title, slug, shortDe
             {/* Footer separado pero con mismo fondo para no quedar huérfano */}
             <div className="card-footer bg-white/5 backdrop-blur-xl rounded-b-2xl p-4 mt-[-1px]">
                 <a
-                    href={`/${slug}`}
+                    href={`/project/${slug}`}
                     className="text-red-300 hover:text-red-200 inline-flex items-center gap-2 text-sm font-medium tracking-wide w-full h-full"
                     >
                     Ver más

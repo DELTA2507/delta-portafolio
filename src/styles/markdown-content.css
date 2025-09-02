@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer components {
+  .markdown-content {
+    @apply text-gray-100 leading-relaxed text-base;
+  }
+
+  .markdown-content div {
+    @apply py-5;
+  }
+
+  .markdown-content hr {
+    @apply my-5 border-t border-white/20;
+  }
+
+  .markdown-content h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  .markdown-content h2 {
+    @apply text-3xl font-semibold mb-3;
+  }
+
+  .markdown-content h3 {
+    @apply text-2xl font-semibold mb-2;
+  }
+
+  .markdown-content p {
+    @apply mb-4;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    @apply pl-6 mb-4;
+  }
+
+  .markdown-content li {
+    @apply mb-2;
+  }
+}

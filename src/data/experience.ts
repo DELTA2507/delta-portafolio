@@ -2,7 +2,7 @@ const experience = [
     {
         role:"Estudiante de Ingeniería de Software",
         place:"CENFOTEC",
-        placeLogo:"/experienceLogos/cenfotec.png",
+        placeLogo:"/company-logos/cenfotec.png",
         link:"https://ucenfotec.ac.cr/",
         date:"May 2025 - Actualidad",
         stack: [
@@ -30,7 +30,7 @@ const experience = [
     {
         role:"Prácticante de Desarrollo Web",
         place:"Cileto",
-        placeLogo:"/experienceLogos/cileto.svg",
+        placeLogo:"/company-logos/cileto.svg",
         link:"https://cileto.com/",
         date:"Oct 2024 - Nov 2024 (2 Meses)",
         stack: [

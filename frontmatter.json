@@ -1,0 +1,80 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "projects",
+      "path": "[[workspace]]/src/content/projects",
+      "contentTypes": [
+        "projects"
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "projects",
+      "previewPath": "'projects'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "images",
+          "type": "image",
+          "required": true,
+          "isPreviewImage": false,
+          "multiple": true
+        },
+        {
+          "name": "stack",
+          "type": "list"
+        },
+        {
+          "name": "link",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "ownerLogo",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "ownerLink",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "projectLogo",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "shortDescription",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "fullDescription",
+          "type": "string",
+          "single": true
+        }
+      ]
+    }
+  ],
+  "frontMatter.git.enabled": true
+}

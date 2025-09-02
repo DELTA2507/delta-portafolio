@@ -21,9 +21,6 @@
 html {
     font-family: "Inter", system-ui, sans-serif;
     color: var(--color-text);
-    background: repeating-linear-gradient(45deg, #000000, #000000 2rem, #0f0f0f 20rem);
-    background-attachment: fixed;
-    background-size: 100% 100%;
     scroll-behavior: smooth;
     box-sizing: border-box;
     overflow-x: hidden;

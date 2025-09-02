@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html {
+    background: repeating-linear-gradient(45deg, #000000, #000000 2rem, #0f0f0f 20rem);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }

@@ -9,7 +9,7 @@ interface ProjectsAnimatedContainerProps {
   projects: any[]
 }
 
-export default function ProjectsAnimatedContainer({ projects }: ProjectsAnimatedContainerProps) {
+export default function AnimatedStaggeredContainerProjects({ projects }: ProjectsAnimatedContainerProps) {
     const projectsRef = useRef<HTMLDivElement>(null)
 
     useGSAP(() => {
