@@ -16,18 +16,18 @@ const projectsCollection = defineCollection({
   }),
 });
 
-const blogsCollection = defineCollection({
+const articlesCollection = defineCollection({
   schema: z.object({
+    slug: z.string().optional(),
     title: z.string(),
-    slug: z.string(),
     cover: z.string(),
+    date: z.date(),
     author: z.string(),
-    date: z.string(),
     summary: z.string(),
   }),
 })
 
 export const collections = {
   projects: projectsCollection,
-  blogs: blogsCollection
+  articles: articlesCollection
 };

@@ -42,7 +42,7 @@ const { frontmatter, default: Content } = file as {
 
     <!-- Big header on top -->
     <div class="flex flex-row items-center justify-between gap-4 mb-8">
-        <h1 class="text-4xl sm:text-5xl font-bold truncate">{frontmatter.title}</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold break-words">{frontmatter.title}</h1>
         <img class="w-15 lg:w-20 self-start sm:self-center" src={frontmatter.ownerLogo} alt="Owner Logo"/>
     </div>
 
@@ -79,7 +79,7 @@ const { frontmatter, default: Content } = file as {
                 </div>
             )}
 
-            <div class="markdown-content prose prose-invert max-w-4xl">
+            <div class="markdown-content prose prose-invert max-w-4xl text-lg lg:text-xl">
                 <Content/>
             </div>
         </div>

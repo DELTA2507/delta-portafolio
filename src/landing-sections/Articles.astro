@@ -1,0 +1,12 @@
+---
+import AnimatedTitle from "../components/AnimatedTitle";
+import AnimatedStaggeredContainerCards from "../components/AnimatedStaggeredContainerCards";
+
+const articlePages = import.meta.glob('../content/articles/*.md', { eager: true });
+const articles = Object.values(articlePages).map((file: any) => file.frontmatter);
+---
+
+<section id="articles" class="container-element space-y-10 bg-neutral-900">
+    <AnimatedTitle title="Blog" icon="fa-newspaper" client:load/>
+    <AnimatedStaggeredContainerCards articles={articles} client:load/>
+</section>

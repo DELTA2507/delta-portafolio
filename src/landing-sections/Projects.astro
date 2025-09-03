@@ -1,6 +1,6 @@
 ---
 import AnimatedTitle from "../components/AnimatedTitle";
-import AnimatedStaggeredContainerProjects from "../components/AnimatedStaggeredContainerProjects";
+import AnimatedStaggeredContainerCards from "../components/AnimatedStaggeredContainerCards";
 
 const projectPages = import.meta.glob('../content/projects/*.md', { eager: true });
 const projects = Object.values(projectPages).map((file: any) => file.frontmatter);
@@ -8,5 +8,5 @@ const projects = Object.values(projectPages).map((file: any) => file.frontmatter
 
 <section id="projects" class="container-element space-y-10">
     <AnimatedTitle title="Proyectos" icon="fa-code" client:load/>
-    <AnimatedStaggeredContainerProjects projects={projects} client:load/>
+    <AnimatedStaggeredContainerCards projects={projects} client:load/>
 </section>

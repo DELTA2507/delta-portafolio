@@ -1,31 +1,29 @@
 ---
 import SlugLayout from '../../layouts/SlugLayout.astro';
-import Carousel from '../../components/Carousel';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import TableOfContents from '../../components/TableOfContents';
 
 export async function getStaticPaths() {
-  const projectPages = import.meta.glob('../../content/projects/*.md', { eager: true });
-  return Object.values(projectPages).map((file: any) => ({
+  const blogPages = import.meta.glob('../../content/articles/*.md', { eager: true });
+  return Object.values(blogPages).map((file: any) => ({
     params: { slug: file.frontmatter.slug }
   }));
 }
 
 const { slug } = Astro.params;
-const projectPages = import.meta.glob('../../content/projects/*.md', { eager: true });
-const file = projectPages[`../../content/projects/${slug}.md`] as any;
+const blogPages = import.meta.glob('../../content/articles/*.md', { eager: true });
+const file = blogPages[`../../content/articles/${slug}.md`] as any;
 
-if (!file) throw new Error(`Project content for slug "${slug}" not found`);
+if (!file) throw new Error(`Blog content for slug "${slug}" not found`);
 
 const { frontmatter, default: Content } = file as {
   frontmatter: {
-    title: string;
-    slug: string;
-    images: string[];
-    stack?: string[];
-    link?: string;
-    ownerLogo?: string;
-    projectLogo?: string;
+    title: string,
+    slug: string,
+    cover: string,
+    date: Date,
+    author: string,
+    summary: string,
   };
   default: any;
 };
@@ -33,76 +31,40 @@ const { frontmatter, default: Content } = file as {
 
 <SlugLayout title={frontmatter.title}>
     <div class="max-w-7xl mx-auto px-4 py-12">
-      <Breadcrumbs
-          paths={[
-              { name: "Inicio", href: "/" },
-              { name: frontmatter.slug },
-          ]}
-      />
+        <Breadcrumbs
+            paths={[
+                { name: "Inicio", href: "/" },
+                { name: frontmatter.slug },
+            ]}
+        />
 
-    <!-- Big header on top -->
-    <div class="flex flex-row items-center justify-between gap-4 mb-8">
-        <h1 class="text-4xl sm:text-5xl font-bold truncate">{frontmatter.title}</h1>
-        <img class="w-15 lg:w-20 self-start sm:self-center" src={frontmatter.ownerLogo} alt="Owner Logo"/>
-    </div>
-
-    <!-- Two-column grid -->
-    <div class="project-detail-container grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-        <!-- Left column: main content -->
-        <div class="project-main lg:col-span-2 flex flex-col gap-6">
-
-            <Carousel projectImages={frontmatter.images} client:load/>
-
-            <div class="project-cta bg-white/5 backdrop-blur-xl rounded-2xl p-6 flex flex-col gap-4 lg:hidden">
-            {frontmatter.link && (
-                <a href={frontmatter.link} target="_blank" class="cta-link inline-flex items-center justify-center">
-                Visit Project
-                <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
-                </a>
-            )}
-            </div>
-
-            <!-- Mobile tech stack -->
-            {frontmatter.stack && frontmatter.stack.length > 0 && (
-                <h2 class="font-semibold text-3xl">Stack utilizado</h2>
-                <div class="project-stack bg-white/5 backdrop-blur-xl rounded-2xl p-5 flex flex-wrap gap-2">
-                    <div class="flex gap-5">
-                        {frontmatter.stack.map((stackIcon) => (
-                            <img
-                                class="w-10 h-10 transition-transform duration-300 group-hover:scale-105"
-                                src={`/stack-icons/${stackIcon}.svg`}
-                                alt={stackIcon}
-                            />
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            <div class="markdown-content prose prose-invert max-w-4xl">
-                <Content/>
-            </div>
+        <!-- Big header on top -->
+        <div class="flex flex-row items-center justify-between gap-4 mb-8">
+            <h1 class="text-4xl sm:text-5xl font-bold break-words">
+                {frontmatter.title}
+            </h1>
         </div>
 
-        <!-- Right column: sticky info / CTA -->
-        <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
-            <div class="lg:sticky top-6 flex flex-col gap-6">
-                <div class="project-logo rounded-xl overflow-hidden py-10">
-                    <img src={frontmatter.projectLogo} alt="Project Logo" />
-                </div>
+        <!-- Two-column grid -->
+        <div class="project-detail-container grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-                <div class="project-cta bg-white/5 backdrop-blur-xl rounded-2xl p-6 flex flex-col gap-4">
-                {frontmatter.link && (
-                    <a href={frontmatter.link} target="_blank" class="cta-link inline-flex items-center justify-center">
-                    Visitar proyecto
-                    <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
-                    </a>
-                )}
+            <!-- Left column: main content -->
+            <div class="project-main lg:col-span-2 flex flex-col gap-6">
+                <p class="bg-white/5 p-5 rounded-2xl text-neutral-300 text-lg lg:text-xl leading-relaxed">
+                    {frontmatter.summary}
+                </p>
+                <img src={frontmatter.cover} alt={frontmatter.title} class="w-full h-full object-cover" />
+                <div class="markdown-content prose prose-invert max-w-4xl text-lg lg:text-xl">
+                    <Content/>
                 </div>
-                
-                <TableOfContents client:load/>
+            </div>
+
+            <!-- Right column: sticky info / CTA -->
+            <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
+                <div class="lg:sticky top-6 flex flex-col gap-6">
+                    <TableOfContents client:load/>
+                </div>
             </div>
         </div>
     </div>
-  </div>
 </SlugLayout>

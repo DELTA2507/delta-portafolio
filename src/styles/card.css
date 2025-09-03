@@ -37,6 +37,7 @@
   overflow: hidden;
   transition: max-height 1s ease;
   -webkit-line-clamp: unset; /* quitar line-clamp, usamos max-height */
+  line-clamp: unset;
 }
 
 .neon-card:hover .description {

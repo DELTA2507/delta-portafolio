@@ -10,6 +10,13 @@
       "contentTypes": [
         "projects"
       ]
+    },
+    {
+      "title": "articles",
+      "path": "[[workspace]]/src/content/articles",
+      "contentTypes": [
+        "articles"
+      ]
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
@@ -72,6 +79,49 @@
           "name": "fullDescription",
           "type": "string",
           "single": true
+        }
+      ]
+    },
+    {
+      "name": "articles",
+      "previewPath": "'articles'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "cover",
+          "type": "image",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "datetime",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "single": true,
+          "required": true
         }
       ]
     }
