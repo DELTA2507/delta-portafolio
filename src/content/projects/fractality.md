@@ -9,10 +9,11 @@
     "/project-images/fractality/fractality2.png",
     "/project-images/fractality/fractality3.png"
   ],
-  "link": "https://biblionerd.com/",
+  "link": "https://fractality-delta.vercel.app/",
   "stack": [
     "react",
     "typescript",
+    "threejs",
     "vitejs",
     "css"
   ],
