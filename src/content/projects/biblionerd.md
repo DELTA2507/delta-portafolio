@@ -5,7 +5,7 @@
   "projectLogo": "/project-logos/biblionerd.svg",
   "ownerLogo": "/company-logos/cileto-responsive.svg",
   "images": [
-    "/project-images/biblionerd.jpg"
+    "/project-images/biblionerd/biblionerd.jpg"
   ],
   "ownerLink": "https://cileto.com",
   "link": "https://biblionerd.com/",
