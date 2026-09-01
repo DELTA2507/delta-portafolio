@@ -1,12 +1,26 @@
 ---
-import AnimatedTitle from "../components/AnimatedTitle";
-import AnimatedStaggeredContainerCards from "../components/AnimatedStaggeredContainerCards";
+import SectionContainer from "../components/SectionContainer.astro";
+import AnimatedHeading from "../components/AnimatedHeading";
+import Trending from "../components/Trending.astro";
+import { featuredProjects } from "../data/featuredProjects";
 
-const projectPages = import.meta.glob('../content/projects/*.md', { eager: true });
+const projectPages = import.meta.glob("../content/projects/*.md", { eager: true });
 const projects = Object.values(projectPages).map((file: any) => file.frontmatter);
 ---
 
-<section id="projects" class="container-element space-y-10">
-    <AnimatedTitle title="Proyectos" icon="fa-code" client:load/>
-    <AnimatedStaggeredContainerCards projects={projects} client:load/>
-</section>
+<SectionContainer id="projects">
+  <AnimatedHeading
+    title="Proyectos"
+    description="Una selección de proyectos que representa lo que puedo construir."
+    icon="fa-code"
+    client:load
+  />
+
+  <Trending
+    type="project"
+    items={projects}
+    featured={featuredProjects}
+    href="/projects"
+    ctaText="Ver todos los proyectos"
+  />
+</SectionContainer>

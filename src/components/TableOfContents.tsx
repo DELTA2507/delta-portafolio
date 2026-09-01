@@ -1,4 +1,3 @@
-// TOC.tsx
 import { useEffect, useState } from 'react';
 
 export default function TableOfContents() {
@@ -12,13 +11,16 @@ export default function TableOfContents() {
   if (links.length === 0) return null;
 
   return (
-    <nav className="flex flex-col gap-3 p-4 rounded-2xl bg-white/5 backdrop-blur-xl shadow-lg border border-white/10">
-      <h3 className="text-xl font-semibold text-neutral-100 mb-2">Tabla de Contenidos</h3>
+    <nav className="flex flex-col gap-3 p-4 rounded-2xl bg-surface/80 backdrop-blur-xl shadow-lg border border-border">
+      <h3 className="text-xl font-semibold text-text mb-2">
+        Tabla de Contenidos
+      </h3>
+
       {links.map(link => (
         <a
           key={link.id}
           href={`#${link.id}`}
-          className="text-red-300 hover:text-red-200 transition-colors duration-200 pl-2 border-l-2 border-transparent hover:border-red-300"
+          className="text-text-muted hover:text-accent transition-colors duration-200 pl-2 border-l-2 border-transparent hover:border-accent"
         >
           {link.text}
         </a>

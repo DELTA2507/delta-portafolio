@@ -1,18 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar';
+import SectionNav from '../components/SectionNav';
 import Hero from '../landing-sections/Hero.astro';
+import About from '../landing-sections/About.astro';
 import Experience from '../landing-sections/Experience.astro';
 import Projects from '../landing-sections/Projects.astro';
 import Articles from '../landing-sections/Articles.astro';
-import Footer from '../landing-sections/Footer.astro';
+import Contact from '../landing-sections/Contact.astro';
 ---
 
 <Layout>
-    <Navbar/>
+    <SectionNav client:load/>
     <Hero/>
+    <About/>
     <Experience/>
     <Projects/>
     <Articles/>
-    <Footer/>
+    <Contact/>
 </Layout>

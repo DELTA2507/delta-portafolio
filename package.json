@@ -9,20 +9,22 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.4",
+    "@astrojs/markdown-remark": "^7.3.0",
+    "@astrojs/react": "^6.0.5",
     "@astrojs/sitemap": "^3.7.3",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@gsap/react": "^2.1.2",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.1",
     "@types/react-dom": "^19.1.2",
-    "astro": "^5.5.5",
+    "astro": "^7.2.10",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "remark-slug": "^7.0.1"
+    "remark-slug": "^7.0.1",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",

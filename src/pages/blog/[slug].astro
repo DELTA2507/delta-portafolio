@@ -5,12 +5,14 @@ import TableOfContents from '../../components/TableOfContents';
 
 export async function getStaticPaths() {
   const blogPages = import.meta.glob('../../content/articles/*.md', { eager: true });
+
   return Object.values(blogPages).map((file: any) => ({
     params: { slug: file.frontmatter.slug }
   }));
 }
 
 const { slug } = Astro.params;
+
 const blogPages = import.meta.glob('../../content/articles/*.md', { eager: true });
 const file = blogPages[`../../content/articles/${slug}.md`] as any;
 
@@ -18,53 +20,59 @@ if (!file) throw new Error(`Blog content for slug "${slug}" not found`);
 
 const { frontmatter, default: Content } = file as {
   frontmatter: {
-    title: string,
-    slug: string,
-    cover: string,
-    date: Date,
-    author: string,
-    summary: string,
+    title: string;
+    slug: string;
+    cover: string;
+    date: Date;
+    author: string;
+    summary: string;
   };
   default: any;
 };
 ---
 
 <SlugLayout title={frontmatter.title}>
-    <div class="max-w-7xl mx-auto px-4 py-12">
-        <Breadcrumbs
-            paths={[
-                { name: "Inicio", href: "/" },
-                { name: frontmatter.slug },
-            ]}
+  <div class="max-w-full mx-auto px-20 py-12">
+
+    <Breadcrumbs
+      paths={[
+        { name: "Inicio", href: "/" },
+        { name: frontmatter.slug },
+      ]}
+    />
+
+    <div class="flex flex-row items-center justify-between gap-4 mb-8">
+      <h1 class="text-4xl sm:text-5xl font-bold break-words text-text">
+        {frontmatter.title}
+      </h1>
+    </div>
+
+    <div class="project-detail-container grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <div class="project-main lg:col-span-2 flex flex-col gap-6">
+
+        <p class="bg-surface/80 backdrop-blur-xl p-5 rounded-2xl text-text-muted text-lg lg:text-xl leading-relaxed">
+          {frontmatter.summary}
+        </p>
+
+        <img
+          src={frontmatter.cover}
+          alt={frontmatter.title}
+          class="w-full h-full object-cover"
         />
 
-        <!-- Big header on top -->
-        <div class="flex flex-row items-center justify-between gap-4 mb-8">
-            <h1 class="text-4xl sm:text-5xl font-bold break-words">
-                {frontmatter.title}
-            </h1>
+        <div class="markdown-content prose prose-invert max-w-4xl text-lg lg:text-xl">
+          <Content />
         </div>
 
-        <!-- Two-column grid -->
-        <div class="project-detail-container grid grid-cols-1 lg:grid-cols-3 gap-8">
+      </div>
 
-            <!-- Left column: main content -->
-            <div class="project-main lg:col-span-2 flex flex-col gap-6">
-                <p class="bg-white/5 p-5 rounded-2xl text-neutral-300 text-lg lg:text-xl leading-relaxed">
-                    {frontmatter.summary}
-                </p>
-                <img src={frontmatter.cover} alt={frontmatter.title} class="w-full h-full object-cover" />
-                <div class="markdown-content prose prose-invert max-w-4xl text-lg lg:text-xl">
-                    <Content/>
-                </div>
-            </div>
-
-            <!-- Right column: sticky info / CTA -->
-            <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
-                <div class="lg:sticky top-6 flex flex-col gap-6">
-                    <TableOfContents client:load/>
-                </div>
-            </div>
+      <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
+        <div class="lg:sticky top-6 flex flex-col gap-6">
+          <TableOfContents client:load />
         </div>
+      </div>
+
     </div>
+  </div>
 </SlugLayout>

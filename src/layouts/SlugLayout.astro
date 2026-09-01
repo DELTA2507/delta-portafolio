@@ -1,7 +1,10 @@
 ---
+import '../../src/styles/global.css'
 import '../../src/styles/markdown-content.css'
 import '../../src/styles/slug-layout.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import Navbar from '../components/Navbar';
+import Footer from '../landing-sections/Footer.astro';
 
 const { title = "Portafolio Joseph UM | Desarrollador Web e Ingeniero de Software" } = Astro.props;
 ---
@@ -16,6 +19,8 @@ const { title = "Portafolio Joseph UM | Desarrollador Web e Ingeniero de Softwar
     <title>{title}</title>
   </head>
   <body>
+    <Navbar pathname={Astro.url.pathname} client:load />
     <slot />
+    <Footer />
   </body>
 </html>

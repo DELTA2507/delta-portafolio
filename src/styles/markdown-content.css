@@ -1,40 +1,97 @@
 @import "tailwindcss";
 
-@layer components {
-  .markdown-content {
-    @apply text-gray-100 leading-relaxed text-base;
-  }
+.markdown-content {
+  color: var(--text-muted);
+  line-height: 1.625;
+  font-size: 1rem;
+}
 
-  .markdown-content div {
-    @apply py-5;
-  }
+.markdown-content div {
+  padding-block: 1.25rem;
+}
 
-  .markdown-content hr {
-    @apply my-5 border-t border-white/20;
-  }
+.markdown-content hr {
+  margin-block: 1.25rem;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
 
-  .markdown-content h1 {
-    @apply text-4xl font-bold mb-4;
-  }
+.markdown-content h1 {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
 
-  .markdown-content h2 {
-    @apply text-3xl font-semibold mb-3;
-  }
+.markdown-content h2 {
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+}
 
-  .markdown-content h3 {
-    @apply text-2xl font-semibold mb-2;
-  }
+.markdown-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
 
-  .markdown-content p {
-    @apply mb-4;
-  }
+.markdown-content p {
+  margin-bottom: 1rem;
+}
 
-  .markdown-content ul,
-  .markdown-content ol {
-    @apply pl-6 mb-4;
-  }
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
 
-  .markdown-content li {
-    @apply mb-2;
-  }
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.markdown-content a:hover {
+  opacity: 0.8;
+}
+
+.markdown-content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.markdown-content blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--text-muted);
+}
+
+.markdown-content code {
+  border-radius: 0.25rem;
+  background: var(--surface);
+  padding: 0.125rem 0.375rem;
+  color: var(--text);
+}
+
+.markdown-content pre {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
 }

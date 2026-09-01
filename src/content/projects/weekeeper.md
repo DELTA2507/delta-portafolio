@@ -1,6 +1,6 @@
 ---
-title: KolumNotes
-slug: kolumnotes
+title: weeKeeper
+slug: weekeeper
 projectLogo: /company-logos/delta-development-and-design.png
 ownerLogo: /company-logos/delta-development-and-design.png
 images:

@@ -1,93 +1,138 @@
 :root {
-  --neon-a: #ff2d2d;
-  --neon-b: #ff4d6d;
+	--neon-a: color-mix(in srgb, var(--accent) 10%, transparent);
+	--neon-b: var(--accent);
+	--card-radius: 1rem;
 }
 
 .neon-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(.2,.8,.2,1);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+	position: relative;
+	border-radius: var(--card-radius);
+	padding: 2px;
+	background: color-mix(in srgb, var(--surface) 80%, transparent);
+	backdrop-filter: blur(20px);
+	overflow: hidden;
+	border: 2px solid var(--border);
+	transition:
+		border-color 0.4s ease,
+		transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .neon-card:hover {
-  border: 2px solid rgba(255, 255, 255, 0.387);
+	border-color: var(--neon-b);
 }
 
 .card-inner {
-  max-height: 24rem;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	max-height: 24rem;
+	overflow: hidden;
+	background: color-mix(in srgb, var(--surface) 80%, transparent);
+	backdrop-filter: blur(20px);
+	border-radius: calc(var(--card-radius) - 2px) calc(var(--card-radius) - 2px) 0 0;
+	transition: max-height 0.5s ease;
 }
 
 .neon-card:hover .card-inner {
-  max-height: 40rem;
+	max-height: 40rem;
 }
 
 .card-content {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	color: var(--text);
 }
 
 .description {
-  max-height: 5.5rem; /* unas 4 líneas */
-  overflow: hidden;
-  transition: max-height 1s ease;
-  -webkit-line-clamp: unset; /* quitar line-clamp, usamos max-height */
-  line-clamp: unset;
+	max-height: 5.5rem;
+	overflow: hidden;
+	margin-top: 1.25rem;
+	color: var(--text-muted);
+	transition: max-height 0.6s ease;
 }
 
 .neon-card:hover .description {
-  max-height: 20rem; /* se expande al hover */
+	max-height: 20rem;
 }
 
 .card-footer {
-  margin-top: auto; 
-  flex-shrink: 0;
+	margin-top: auto;
+	flex-shrink: 0;
+	padding: 1rem;
+	background: color-mix(in srgb, var(--surface) 80%, transparent);
+	backdrop-filter: blur(20px);
+	border-radius: 0 0 calc(var(--card-radius) - 2px) calc(var(--card-radius) - 2px);
+	margin-top: -1px;
 }
 
 .neon-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(60% 60% at 50% 0%, var(--neon-a) 0%, transparent 60%),
-              radial-gradient(80% 80% at 100% 100%, var(--neon-b) 0%, transparent 70%);
-  background-size: 200% 200%;
-  filter: blur(20px);
-  opacity: 1; /* estado default */
-  transition: opacity 0.5s ease;
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background:
+		radial-gradient(60% 60% at 50% 0%, var(--neon-a) 0%, transparent 60%),
+		radial-gradient(80% 80% at 100% 100%, var(--neon-b) 0%, transparent 70%);
+	background-size: 200% 200%;
+	filter: blur(20px);
+	opacity: 1;
+	animation: glow-shift 10s ease-in-out infinite;
+	animation-play-state: paused;
+	transition: opacity 0.5s ease;
 }
 
 .neon-card:hover::before {
-  opacity: 0;
-}
-
-.neon-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(60% 60% at 50% 0%, var(--neon-a) 0%, transparent 60%),
-              radial-gradient(80% 80% at 100% 100%, var(--neon-b) 0%, transparent 70%);
-  background-size: 200% 200%;
-  filter: blur(20px);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  animation: glow-shift 10s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.neon-card:hover::after {
-  opacity: 0.6;
+	opacity: 0.6;
+	animation-play-state: running;
 }
 
 @keyframes glow-shift {
-  0% { background-position: 0% 50%, 100% 50%; }
-  50% { background-position: 100% 50%, 0% 50%; }
-  100% { background-position: 0% 50%, 100% 50%; }
+	0% {
+		background-position: 0% 50%, 100% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%, 0% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%, 100% 50%;
+	}
+}
+
+.card-badge {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 20;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 9999px;
+	overflow: hidden;
+	background: var(--background);
+	border: 2px solid transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: border-color 0.3s ease;
+}
+
+.card-badge:hover {
+	border-color: var(--neon-b);
+}
+
+[data-theme="light"] {
+	--neon-a: color-mix(in srgb, var(--accent) 35%, transparent);
+	--neon-b: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.neon-card,
+	.card-inner,
+	.description,
+	.neon-card::before {
+		transition: none;
+		animation: none;
+	}
 }

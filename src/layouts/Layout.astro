@@ -3,11 +3,24 @@ import '../../src/styles/global.css'
 import '../../src/styles/index.css'
 import '../../src/styles/card.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import Navbar from '../components/Navbar';
+import Footer from '../landing-sections/Footer.astro';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
+		<script is:inline>
+			(function () {
+				try {
+					const stored = localStorage.getItem("theme-storage");
+					const theme = stored ? JSON.parse(stored).state.theme : "dark";
+					document.documentElement.setAttribute("data-theme", theme);
+				} catch (e) {
+					document.documentElement.setAttribute("data-theme", "dark");
+				}
+			})();
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -17,6 +30,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 		<title>Portafolio Joseph UM | Desarrollador Web e Ingeniero de Software</title>
 	</head>
 	<body>
+		<Navbar pathname={Astro.url.pathname} client:load />
 		<slot />
+		<Footer />
 	</body>
 </html>

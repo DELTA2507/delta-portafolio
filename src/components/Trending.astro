@@ -1,0 +1,78 @@
+---
+interface Props {
+  items: any[];
+  featured: string[];
+  href?: string;
+  ctaText?: string;
+  type?: "project" | "article";
+}
+
+const {
+  items,
+  featured,
+  href,
+  ctaText = "Ver todos",
+  type = "project",
+} = Astro.props;
+
+const featuredItems = featured
+  .map((slug) => items.find((item) => item.slug === slug))
+  .filter(Boolean);
+---
+
+{featuredItems.length > 0 && (
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {featuredItems.map((item, index) => (
+      <a
+        href={`/${type === "project" ? "projects" : "blog"}/${item.slug}`}
+        class:list={[
+          "group relative overflow-hidden rounded-2xl border border-border bg-surface",
+          index === 0
+            ? "lg:col-span-2 lg:row-span-2 min-h-[500px]"
+            : "lg:col-span-1 min-h-[240px]",
+        ]}
+      >
+        <img
+          src={type === "project" ? item.images?.[0] : item.cover}
+          alt={item.title}
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">
+            {type === "project" ? "Proyecto destacado" : "Artículo destacado"}
+          </p>
+
+          <h3
+            class:list={[
+              "font-bold text-white",
+              index === 0 ? "text-3xl" : "text-xl",
+            ]}
+          >
+            {item.title}
+          </h3>
+
+          {index === 0 && (
+            <p class="mt-2 text-sm text-white/70 line-clamp-2">
+              {item.shortDescription ?? item.summary}
+            </p>
+          )}
+        </div>
+      </a>
+    ))}
+  </div>
+)}
+
+{href && (
+  <div class="flex justify-center mt-8">
+    <a
+      href={href}
+      class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white font-semibold hover:brightness-110 transition-all"
+    >
+      {ctaText}
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+)}

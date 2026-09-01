@@ -37,7 +37,7 @@ export default function AnimatedStaggeredContainerExperience({ experience }: Exp
   return (
     <ol
       ref={eventRef}
-      className="relative border-s border-neutral-700"
+      className="relative border-s border-border"
     >
       {experience.map((event, index) => (
         <ExperienceEvent key={index} {...event} />

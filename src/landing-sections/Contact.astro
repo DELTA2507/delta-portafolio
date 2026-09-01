@@ -1,0 +1,29 @@
+---
+import AnimatedTitle from "../components/AnimatedHeading.tsx"
+import ContactForm from "../components/ContactForm.tsx"
+import SectionContainer from "../components/SectionContainer.astro";
+---
+
+<SectionContainer id="contact" class="border-t border-border">
+    <div class="max-w-6xl mx-auto px-6">
+        <AnimatedTitle
+        title="Contacto"
+        description="¿Tenés alguna pregunta? Hablemos."
+        icon="fa-envelope"
+        className="justify-center"
+        client:load
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-background/40 border border-border rounded-2xl p-8 md:p-14">
+            <p class="text-2xl md:text-3xl leading-snug text-text max-w-md">
+            ¿Tenés una <span class="text-accent font-semibold">idea</span>?
+            <br>
+            ¿Un <span class="text-accent font-semibold">proyecto en mente</span>?
+            <br>
+            ¿Necesitás una <span class="text-accent font-semibold">página web</span>?
+            </p>
+
+            <ContactForm client:load />
+        </div>
+    </div>
+</SectionContainer>
