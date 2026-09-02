@@ -63,7 +63,7 @@ export default function SectionNav() {
 
 	return (
 		<nav
-			className="flex fixed right-8 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-5"
+			className="flex fixed right-5 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-5"
 			aria-label="Navegación de secciones"
 		>
 			{sections.map((section) => {

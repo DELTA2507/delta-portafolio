@@ -11,6 +11,11 @@ stack:
   - vitejs
   - typescript
   - css
+  - tailwindcss
+  - shadcn
+  - radix
+  - lucide
+  - capacitor
 shortDescription: >
   Una aplicación moderna, cómoda y minimalista de Musica
 fullDescription: >

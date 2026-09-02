@@ -1,23 +1,28 @@
+---
+import { FaLinkedinIn } from "react-icons/fa";
+import { SiGithub } from "react-icons/si";
+---
+
 <footer class="border-t border-border bg-surface py-6 px-6">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-text-muted">
-    <p>&copy; {new Date().getFullYear()} Joseph Ugalde Murillo · Dev Name lorem</p>
+	<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-text-muted">
+		<p>&copy; {new Date().getFullYear()} Joseph Ugalde Murillo · Dev Name lorem</p>
 
-    <div class="flex gap-5">
-      <a
-        href="https://www.linkedin.com/in/joseph-ugalde-murillo-0b4b4227a/"
-        class="hover:text-accent transition-colors"
-        aria-label="LinkedIn"
-      >
-        <i class="fab fa-linkedin fa-lg"></i>
-      </a>
+		<div class="flex gap-5">
+			<a
+				href="https://www.linkedin.com/in/joseph-ugalde-murillo-0b4b4227a/"
+				class="hover:text-accent transition-colors"
+				aria-label="LinkedIn"
+			>
+				<FaLinkedinIn size={20} />
+			</a>
 
-      <a
-        href="https://github.com/DELTA2507"
-        class="hover:text-accent transition-colors"
-        aria-label="GitHub"
-      >
-        <i class="fab fa-github fa-lg"></i>
-      </a>
-    </div>
-  </div>
+			<a
+				href="https://github.com/DELTA2507"
+				class="hover:text-accent transition-colors"
+				aria-label="GitHub"
+			>
+				<SiGithub size={20} />
+			</a>
+		</div>
+	</div>
 </footer>

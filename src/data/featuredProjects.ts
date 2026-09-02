@@ -1,6 +1,6 @@
 export const featuredProjects = [
   "sonelier",
-  "wekeeper",
-  "zenflow",
+  "weekeeper",
   "poligolearn",
+  "zenflow"
 ];

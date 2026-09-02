@@ -1,15 +1,16 @@
 ---
-import AnimatedTitle from "../components/AnimatedHeading.tsx"
+import AnimatedHeading from "../components/AnimatedHeading.tsx"
 import ContactForm from "../components/ContactForm.tsx"
 import SectionContainer from "../components/SectionContainer.astro";
+import { Mail } from "lucide-react";
 ---
 
 <SectionContainer id="contact" class="border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
-        <AnimatedTitle
+        <AnimatedHeading
         title="Contacto"
         description="¿Tenés alguna pregunta? Hablemos."
-        icon="fa-envelope"
+        icon="contact"
         className="justify-center"
         client:load
         />

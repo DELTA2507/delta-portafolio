@@ -3,6 +3,7 @@ import SectionContainer from "../components/SectionContainer.astro";
 import AnimatedHeading from "../components/AnimatedHeading";
 import Trending from "../components/Trending.astro";
 import { featuredProjects } from "../data/featuredProjects";
+import { Code2 } from "lucide-react";
 
 const projectPages = import.meta.glob("../content/projects/*.md", { eager: true });
 const projects = Object.values(projectPages).map((file: any) => file.frontmatter);
@@ -12,7 +13,7 @@ const projects = Object.values(projectPages).map((file: any) => file.frontmatter
   <AnimatedHeading
     title="Proyectos"
     description="Una selección de proyectos que representa lo que puedo construir."
-    icon="fa-code"
+    icon="projects"
     client:load
   />
 

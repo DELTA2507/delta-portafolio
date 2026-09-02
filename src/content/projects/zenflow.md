@@ -11,6 +11,13 @@ stack:
   - vitejs
   - typescript
   - css
+  - tailwindcss
+  - shadcn
+  - radix
+  - lucide
+  - zustand
+  - electron
+  - capacitor
 shortDescription: >
   Scrum + Kanban WebApp
 fullDescription: >

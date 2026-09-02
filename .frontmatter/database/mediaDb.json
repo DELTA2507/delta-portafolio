@@ -1,5 +1,9 @@
 {
   "public": {
-    "project-images": {}
+    "project-images": {},
+    "stack-icons": {}
+  },
+  "src": {
+    "assets": {}
   }
 }

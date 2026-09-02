@@ -1,11 +1,16 @@
 ---
+import { Image } from "astro:assets";
+import { FaLinkedinIn } from "react-icons/fa";
+import { SiGithub } from "react-icons/si";
+import devPhoto from "../assets/dev-photo.jpg";
 ---
 
 <section id="hero" class="container-element w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
 	<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-12 md:gap-8 items-center">
 		<div class="order-2 md:order-1 text-left space-y-6">
 			<div class="flex items-center gap-3">
-				<span class="w-8 h-[2px] bg-accent"></span>
+				<span class="w-5 h-[2px] bg-accent"></span>
+
 				<span class="text-sm sm:text-base text-accent font-semibold tracking-wide">
 					Desarrollador Web · Ingeniero de Software
 				</span>
@@ -20,33 +25,42 @@
 			</p>
 
 			<div class="flex flex-wrap items-center gap-3 pt-2">
-
 				<a
 					href="mailto:joseph@example.com?subject=Nuevo%20proyecto%20web&body=Hola%20Joseph,%20tengo%20un%20sitio%20que%20quiero%20desarrollar."
 					class="relative inline-flex items-center px-6 py-2.5 bg-accent text-background font-semibold text-sm [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)] hover:brightness-110 transition-all"
 				>
-					Contáctame
+					<span class="transition-transform duration-300 hover:scale-105">
+						Contáctame
+					</span>
 				</a>
 
 				<a
 					href="https://www.linkedin.com/in/joseph-ugalde-murillo-0b4b4227a/"
+					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="LinkedIn"
 					class="group inline-block bg-surface p-[1.5px] [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)] hover:bg-[#0A66C2] transition-colors"
 				>
-					<span class="flex items-center gap-2 px-5 py-2.5 bg-background text-text-muted text-sm font-medium [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)] group-hover:text-[#0A66C2] transition-colors">
-						<i class="fab fa-linkedin fa-lg"></i>
-						LinkedIn
+					<span class="flex items-center justify-center px-5 py-2.5 bg-background [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)]">
+						<span class="flex items-center gap-2 text-text-muted text-sm font-medium group-hover:text-[#0A66C2] transition-all duration-300 group-hover:scale-105">
+							<FaLinkedinIn size={20} color="currentColor" />
+							LinkedIn
+						</span>
 					</span>
 				</a>
 
 				<a
 					href="https://github.com/DELTA2507"
+					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="GitHub"
 					class="group inline-block bg-surface p-[1.5px] [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)] hover:bg-text transition-colors"
 				>
-					<span class="flex items-center gap-2 px-5 py-2.5 bg-background text-text-muted text-sm font-medium [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)] group-hover:text-text transition-colors">
-						<i class="fab fa-github fa-lg"></i>
-						GitHub
+					<span class="flex items-center justify-center px-5 py-2.5 bg-background [clip-path:polygon(0_0,100%_0,100%_70%,90%_100%,0_100%)]">
+						<span class="flex items-center gap-2 text-text-muted text-sm font-medium group-hover:text-text transition-all duration-300 group-hover:scale-105">
+							<SiGithub size={20} color="currentColor" />
+							GitHub
+						</span>
 					</span>
 				</a>
 
@@ -54,38 +68,43 @@
 					href="https://ko-fi.com/J7N6224Z9A"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex items-center ml-1"
-				>
-					<img height="40" style="height:40px;" src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" />
-				</a>
-
-			</div>
-		</div>
-
-		<div class="order-1 md:order-2 relative w-full max-w-sm mx-auto md:max-w-none aspect-[4/4.5]">
-
-			<div
-				class="absolute inset-0 translate-x-3 translate-y-3 bg-accent"
-				style="clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);"
-			></div>
-
-			<div
-				class="relative w-full h-full bg-surface p-[3px]"
-				style="clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);"
-			>
-				<div
-					class="w-full h-full bg-background overflow-hidden"
-					style="clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);"
+					class="inline-flex items-center ml-1 transition-transform duration-300 hover:scale-110"
 				>
 					<img
-						src="/dev-photo.jpg"
-						alt="Joseph Ugalde Murillo"
-						class="w-full h-full object-cover"
+						height="40"
+						style="height:40px;"
+						src="https://storage.ko-fi.com/cdn/kofi6.png?v=6"
+						alt="Buy Me a Coffee at ko-fi.com"
 					/>
-				</div>
+				</a>
 			</div>
-
-			<div class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-accent pointer-events-none"></div>
 		</div>
+
+		<div class="order-1 md:order-2 relative w-[75%] max-w-[280px] mx-auto md:w-full md:max-w-[420px] lg:max-w-[460px] aspect-1/1">
+	<div
+		class="absolute inset-0 translate-x-3 translate-y-3 bg-accent"
+		style="clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);"
+	></div>
+
+	<div
+		class="relative w-full h-full bg-surface p-[3px]"
+		style="clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);"
+	>
+		<div
+			class="w-full h-full bg-background overflow-hidden"
+			style="clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);"
+		>
+			<Image
+				src={devPhoto}
+				alt="Joseph Ugalde Murillo"
+				class="w-full h-full object-cover"
+			/>
+		</div>
+	</div>
+
+	<div
+		class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-accent pointer-events-none"
+	></div>
+</div>
 	</div>
 </section>

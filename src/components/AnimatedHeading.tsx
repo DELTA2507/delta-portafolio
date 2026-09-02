@@ -1,56 +1,87 @@
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useRef } from "react"
+import {
+	Briefcase,
+	Mail,
+	Code2,
+	User,
+  Newspaper,
+	type LucideIcon,
+} from "lucide-react"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
 interface AnimatedTitleProps {
-  title: string
-  description: string
-  icon: string
-  className?: string
+	title: string
+	description: string
+	icon: string
+	className?: string
 }
 
-export default function AnimatedHeading({ title, description, icon, className }: AnimatedTitleProps) {
-  const titleRef = useRef<HTMLHeadingElement>(null)
+const icons: Record<string, LucideIcon> = {
+	experience: Briefcase,
+	contact: Mail,
+	projects: Code2,
+	about: User,
+  blog: Newspaper,
+}
 
-  useGSAP(() => {
-    if (!titleRef.current) return
+export default function AnimatedHeading({
+	title,
+	description,
+	icon,
+	className
+}: AnimatedTitleProps) {
+	const titleRef = useRef<HTMLHeadingElement>(null)
+	const Icon = icons[icon] ?? Code2
 
-    gsap.registerPlugin(ScrollTrigger)
+	useGSAP(() => {
+		if (!titleRef.current) return
 
-    gsap.fromTo(
-      titleRef.current,
-      {
-        x: 30,
-        opacity: 0
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        }
-      }
-    )
-  }, [])
+		gsap.registerPlugin(ScrollTrigger)
 
-  return (
-    <div className={`flex flex-col gap-2 py-10 ${className}`}>
-      <h1 ref={titleRef} className="flex items-center gap-2 m-0 text-text">
-        <i className={`fa-solid ${icon} text-accent`} aria-hidden="true" />
-        <span>{title}</span>
-      </h1>
+		gsap.fromTo(
+			titleRef.current,
+			{
+				x: 30,
+				opacity: 0
+			},
+			{
+				x: 0,
+				opacity: 1,
+				duration: 0.5,
+				delay: 0.2,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: titleRef.current,
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		)
+	}, [])
 
-      {description && (
-        <p className="text-text-muted text-base m-0">
-          {description}
-        </p>
-      )}
-    </div>
-  )
+	return (
+		<div className={`flex flex-col gap-2 py-10 ${className ?? ""}`}>
+			<h1
+				ref={titleRef}
+				className="flex items-center gap-2 m-0 text-text"
+			>
+				<Icon
+					className="text-accent"
+					size={50}
+					strokeWidth={2}
+					aria-hidden="true"
+				/>
+
+				<span>{title}</span>
+			</h1>
+
+			{description && (
+				<p className="text-text-muted text-base m-0">
+					{description}
+				</p>
+			)}
+		</div>
+	)
 }
