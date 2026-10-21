@@ -6,10 +6,19 @@
 	--color-background: var(--background);
 	--color-surface: var(--surface);
 	--color-border: var(--border);
+
 	--color-accent: var(--accent);
+	--color-accent-hover: var(--accent-hover);
+	--color-accent-contrast: var(--accent-contrast);
+	--color-accent-soft: var(--accent-soft);
+	--color-accent-border: var(--accent-border);
+	--color-accent-glow: var(--accent-glow);
 }
 
-/* Theme styles */
+/* =========================================
+   DARK THEME
+   ========================================= */
+
 :root,
 [data-theme="dark"] {
 	--text: #ffffff;
@@ -17,8 +26,21 @@
 	--background: #000000;
 	--surface: #1a1717;
 	--border: rgba(255, 255, 255, 0.1);
-	--accent: #e23c52;
+
+	/* Brand accent — Dev Vault */
+	--accent: #d71920;
+	--accent-hover: #f02a32;
+	--accent-contrast: #ffffff;
+
+	/* Extended accent colors */
+	--accent-soft: rgba(215, 25, 32, 0.12);
+	--accent-border: rgba(215, 25, 32, 0.4);
+	--accent-glow: rgba(215, 25, 32, 0.18);
 }
+
+/* =========================================
+   LIGHT THEME
+   ========================================= */
 
 [data-theme="light"] {
 	--text: #17151a;
@@ -26,28 +48,48 @@
 	--background: #ffffff;
 	--surface: #f3f4f5;
 	--border: rgba(0, 0, 0, 0.1);
-	--accent: #cd0000;
+
+	/* Brand accent — Dev Vault */
+	--accent: #d71920;
+	--accent-hover: #b9141b;
+	--accent-contrast: #ffffff;
+
+	/* Extended accent colors */
+	--accent-soft: rgba(215, 25, 32, 0.07);
+	--accent-border: rgba(215, 25, 32, 0.32);
+	--accent-glow: rgba(215, 25, 32, 0.1);
 }
 
-/* Background pattern styles */
+
+/* =========================================
+   SHARED PAGE BACKGROUND
+   Delta Portfolio + Dev Vault
+   =========================================
+*/
+
+:root,
 [data-theme="dark"] {
-	--page-background:
-		repeating-linear-gradient(
-			45deg,
-			#000000,
-			#000000 2rem,
-			#0f0f0f 20rem
-		);
+  --page-background-color: #000000;
+  --page-background-accent: #0f0f0f;
+
+  --page-background: repeating-linear-gradient(
+    45deg,
+    var(--page-background-color),
+    var(--page-background-color) 2rem,
+    var(--page-background-accent) 20rem
+  );
 }
 
 [data-theme="light"] {
-	--page-background:
-		repeating-linear-gradient(
-			45deg,
-			#ffffff,
-			#ffffff 2rem,
-			#f4f2f2 20rem
-		);
+  --page-background-color: #ffffff;
+  --page-background-accent: #f4f2f2;
+
+  --page-background: repeating-linear-gradient(
+    45deg,
+    var(--page-background-color),
+    var(--page-background-color) 2rem,
+    var(--page-background-accent) 20rem
+  );
 }
 
 html {
