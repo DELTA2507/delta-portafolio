@@ -1,6 +1,54 @@
+
 @import "tailwindcss";
 
+/* =========================================
+   1. FONT CONFIGURATION
+   Cambiar la familia tipográfica desde aquí.
+   ========================================= */
+
+:root {
+	--font-family-base: "Inter";
+	--font-family-fallback: "Segoe UI", Arial, sans-serif;
+
+	--font-body: var(--font-family-base), var(--font-family-fallback);
+	--font-display: var(--font-body);
+	--font-ui: var(--font-body);
+	--font-mono: "Courier New", monospace;
+
+	/* Typography scale */
+	--font-size-base: 16px;
+	--line-height-base: 1.6;
+	--line-height-heading: 1.2;
+
+	/* Font weights */
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+}
+
+/* =========================================
+   2. LOCAL INTER VARIABLE FONT
+   File: public/fonts/Inter-VariableFont_opsz,wght.ttf
+   ========================================= */
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+/* =========================================
+   3. TAILWIND THEME
+   ========================================= */
+
 @theme {
+	--font-body: var(--font-family-base), var(--font-family-fallback);
+	--font-display: var(--font-family-base), var(--font-family-fallback);
+	--font-mono: "Courier New", monospace;
+
 	--color-text: var(--text);
 	--color-text-muted: var(--text-muted);
 	--color-background: var(--background);
@@ -16,11 +64,13 @@
 }
 
 /* =========================================
-   DARK THEME
+   4. DARK THEME
    ========================================= */
 
 :root,
 [data-theme="dark"] {
+	color-scheme: dark;
+
 	--text: #ffffff;
 	--text-muted: #a3a3a3;
 	--background: #000000;
@@ -36,13 +86,18 @@
 	--accent-soft: rgba(215, 25, 32, 0.12);
 	--accent-border: rgba(215, 25, 32, 0.4);
 	--accent-glow: rgba(215, 25, 32, 0.18);
+
+	--page-background-color: #000000;
+	--page-background-accent: #0f0f0f;
 }
 
 /* =========================================
-   LIGHT THEME
+   5. LIGHT THEME
    ========================================= */
 
 [data-theme="light"] {
+	color-scheme: light;
+
 	--text: #17151a;
 	--text-muted: #5c5c5c;
 	--background: #ffffff;
@@ -58,54 +113,66 @@
 	--accent-soft: rgba(215, 25, 32, 0.07);
 	--accent-border: rgba(215, 25, 32, 0.32);
 	--accent-glow: rgba(215, 25, 32, 0.1);
-}
 
+	--page-background-color: #ffffff;
+	--page-background-accent: #f4f2f2;
+}
 
 /* =========================================
-   SHARED PAGE BACKGROUND
+   6. SHARED PAGE BACKGROUND
    Delta Portfolio + Dev Vault
-   =========================================
-*/
+   ========================================= */
 
 :root,
-[data-theme="dark"] {
-  --page-background-color: #000000;
-  --page-background-accent: #0f0f0f;
-
-  --page-background: repeating-linear-gradient(
-    45deg,
-    var(--page-background-color),
-    var(--page-background-color) 2rem,
-    var(--page-background-accent) 20rem
-  );
+[data-theme="dark"],
+[data-theme="light"] {
+	--page-background: repeating-linear-gradient(
+		45deg,
+		var(--page-background-color),
+		var(--page-background-color) 2rem,
+		var(--page-background-accent) 20rem
+	);
 }
 
-[data-theme="light"] {
-  --page-background-color: #ffffff;
-  --page-background-accent: #f4f2f2;
+/* =========================================
+   7. GLOBAL TYPOGRAPHY AND DOCUMENT
+   ========================================= */
 
-  --page-background: repeating-linear-gradient(
-    45deg,
-    var(--page-background-color),
-    var(--page-background-color) 2rem,
-    var(--page-background-accent) 20rem
-  );
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 html {
-	font-family: "Inter", system-ui, sans-serif;
+	font-family: var(--font-body);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-regular);
+	line-height: var(--line-height-base);
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "liga" 1, "calt" 1;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
 	color: var(--text);
-    
+
 	background: var(--page-background);
 	background-attachment: fixed;
 	background-size: 100% 100%;
 
 	scroll-behavior: smooth;
-	box-sizing: border-box;
 	overflow-x: hidden;
+
 	scrollbar-width: thin;
 	scrollbar-color: var(--accent) transparent;
 }
+
+/* =========================================
+   8. SCROLLBAR
+   ========================================= */
 
 html::-webkit-scrollbar {
 	width: 6px;
@@ -124,24 +191,134 @@ html::-webkit-scrollbar-thumb:hover {
 	background: color-mix(in srgb, var(--accent) 80%, var(--text));
 }
 
+/* =========================================
+   9. BODY
+   ========================================= */
+
 body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	min-height: 100%;
+	min-height: 100vh;
 	position: relative;
+
+	font-family: var(--font-body);
+	font-weight: var(--font-weight-regular);
+
+	color: var(--text);
 	background: transparent;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--color-text);
+/* =========================================
+   10. FORMS AND INTERACTIVE ELEMENTS
+   ========================================= */
+
+button,
+input,
+textarea,
+select {
+	font-family: var(--font-ui);
+	font-size: inherit;
 }
+
+button {
+	color: inherit;
+	accent-color: var(--accent);
+}
+
+input,
+textarea,
+select {
+	accent-color: var(--accent);
+}
+
+a {
+	color: inherit;
+}
+
+/* =========================================
+   11. HEADINGS
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-display);
+	font-synthesis: none;
+	line-height: var(--line-height-heading);
+	text-wrap: balance;
+	color: var(--text);
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: var(--font-weight-semibold);
+}
+
+h2 {
+	font-weight: var(--font-weight-semibold);
+}
+
+h3,
+h4,
+h5,
+h6 {
+	font-weight: var(--font-weight-medium);
+}
+
+strong,
+b {
+	font-weight: var(--font-weight-semibold);
+}
+
+/* =========================================
+   12. MEDIA
+   ========================================= */
+
+img,
+svg {
+	max-width: 100%;
+}
+
+/* =========================================
+   13. ACCESSIBILITY
+   ========================================= */
+
+::selection {
+	color: var(--accent-contrast);
+	background: var(--accent);
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 4px;
+}
+
+/* =========================================
+   14. RESPONSIVE
+   ========================================= */
 
 @media (max-width: 800px) {
 	body {
 		-ms-overflow-style: none;
 		overflow-x: hidden;
+	}
+}
+
+/* =========================================
+   15. REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
 	}
 }
