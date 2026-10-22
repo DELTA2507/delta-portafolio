@@ -1,30 +1,27 @@
 ---
-import AnimatedHeading from "../components/AnimatedHeading.tsx"
-import ContactForm from "../components/ContactForm.tsx"
+import AnimatedHeading from "../components/AnimatedHeading.tsx";
+import ContactForm from "../components/ContactForm.tsx";
 import SectionContainer from "../components/SectionContainer.astro";
-import { Mail } from "lucide-react";
 ---
 
-<SectionContainer id="contact" class="border-t border-border">
-    <div class="max-w-6xl mx-auto px-6">
-        <AnimatedHeading
-        title="Contacto"
-        description="¿Tenés alguna pregunta? Hablemos."
-        icon="contact"
-        className="justify-center"
-        client:load
-        />
+<SectionContainer id="contact">
+	<AnimatedHeading
+		eyebrow="TRABAJEMOS JUNTOS"
+		title="Contacto"
+		description="¿Tenés alguna pregunta? Hablemos."
+		icon="contact"
+		client:load
+	/>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-background/40 border border-border rounded-2xl p-8 md:p-14">
-            <p class="text-2xl md:text-3xl leading-snug text-text max-w-md">
-            ¿Tenés una <span class="text-accent font-semibold">idea</span>?
-            <br>
-            ¿Un <span class="text-accent font-semibold">proyecto en mente</span>?
-            <br>
-            ¿Necesitás una <span class="text-accent font-semibold">página web</span>?
-            </p>
+	<div class="grid grid-cols-1 items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14 lg:gap-20">
+		<p class="m-0 border-s-2 border-accent ps-6 text-heading leading-snug text-text md:text-title md:leading-snug">
+			¿Tenés una <span class="font-semibold text-accent">idea</span>?
+			<br />
+			¿Un <span class="font-semibold text-accent">Proyecto en Mente</span>?
+			<br />
+			¿Necesitás una <span class="font-semibold text-accent">Página Web</span>?
+		</p>
 
-            <ContactForm client:load />
-        </div>
-    </div>
+		<ContactForm client:load />
+	</div>
 </SectionContainer>

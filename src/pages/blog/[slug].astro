@@ -32,46 +32,46 @@ const { frontmatter, default: Content } = file as {
 ---
 
 <SlugLayout title={frontmatter.title}>
-  <div class="max-w-full mx-auto px-20 py-12">
+  <div class="mx-auto w-full max-w-6xl px-5 pt-28 pb-section sm:px-8 sm:pt-32 lg:px-10">
 
-    <Breadcrumbs
-      paths={[
-        { name: "Inicio", href: "/" },
-        { name: frontmatter.slug },
-      ]}
-    />
-
-    <div class="flex flex-row items-center justify-between gap-4 mb-8">
-      <h1 class="text-4xl sm:text-5xl font-bold break-words text-text">
-        {frontmatter.title}
-      </h1>
+    <div class="mb-8 md:mb-10">
+      <Breadcrumbs
+        paths={[
+          { name: "Inicio", href: "/" },
+          { name: frontmatter.slug },
+        ]}
+      />
     </div>
 
-    <div class="project-detail-container grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <h1 class="m-0 mb-10 max-w-[28ch] break-words text-title font-semibold tracking-tight text-text md:mb-14">
+      {frontmatter.title}
+    </h1>
 
-      <div class="project-main lg:col-span-2 flex flex-col gap-6">
+    <div class="project-detail-container grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_22rem]">
 
-        <p class="bg-surface/80 backdrop-blur-xl p-5 rounded-2xl text-text-muted text-lg lg:text-xl leading-relaxed">
+      <div class="project-main flex min-w-0 flex-col gap-8 md:gap-10">
+
+        <p class="m-0 rounded-2xl border border-border bg-surface/80 p-6 text-base leading-relaxed text-text-muted backdrop-blur-xl sm:p-7 sm:text-lg">
           {frontmatter.summary}
         </p>
 
         <img
           src={frontmatter.cover}
           alt={frontmatter.title}
-          class="w-full h-full object-cover"
+          class="aspect-[16/9] w-full rounded-2xl object-cover"
         />
 
-        <div class="markdown-content prose prose-invert max-w-4xl text-lg lg:text-xl">
+        <div class="markdown-content prose prose-invert max-w-[68ch] text-base leading-relaxed sm:text-lg [&_h2]:scroll-mt-28 [&_h3]:scroll-mt-28">
           <Content />
         </div>
 
       </div>
 
-      <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
-        <div class="lg:sticky top-6 flex flex-col gap-6">
+      <aside class="project-sidebar hidden lg:block">
+        <div class="flex flex-col gap-6 lg:sticky lg:top-28">
           <TableOfContents client:load />
         </div>
-      </div>
+      </aside>
 
     </div>
   </div>

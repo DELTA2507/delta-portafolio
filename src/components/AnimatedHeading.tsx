@@ -1,21 +1,24 @@
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import { useRef } from "react"
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
 import {
 	Briefcase,
 	Mail,
 	Code2,
 	User,
-  Newspaper,
+	Newspaper,
 	type LucideIcon,
-} from "lucide-react"
-import ScrollTrigger from "gsap/ScrollTrigger"
+} from "lucide-react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Eyebrow from "../components/Eyebrow";
 
 interface AnimatedTitleProps {
-	title: string
-	description: string
-	icon: string
-	className?: string
+	title: string;
+	description: string;
+	icon: string;
+	eyebrow?: string;
+	className?: string;
+	as?: "h1" | "h2";
 }
 
 const icons: Record<string, LucideIcon> = {
@@ -23,29 +26,28 @@ const icons: Record<string, LucideIcon> = {
 	contact: Mail,
 	projects: Code2,
 	about: User,
-  blog: Newspaper,
-}
+	blog: Newspaper,
+};
 
 export default function AnimatedHeading({
 	title,
 	description,
 	icon,
-	className
+	eyebrow,
+	className,
+	as: Tag = "h2",
 }: AnimatedTitleProps) {
-	const titleRef = useRef<HTMLHeadingElement>(null)
-	const Icon = icons[icon] ?? Code2
+	const titleRef = useRef<HTMLHeadingElement>(null);
+	const Icon = icons[icon] ?? Code2;
 
 	useGSAP(() => {
-		if (!titleRef.current) return
+		if (!titleRef.current) return;
 
-		gsap.registerPlugin(ScrollTrigger)
+		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.fromTo(
 			titleRef.current,
-			{
-				x: 30,
-				opacity: 0
-			},
+			{ x: 30, opacity: 0 },
 			{
 				x: 0,
 				opacity: 1,
@@ -55,33 +57,47 @@ export default function AnimatedHeading({
 				scrollTrigger: {
 					trigger: titleRef.current,
 					start: "top 80%",
-					toggleActions: "play none none none"
-				}
+					toggleActions: "play none none none",
+				},
 			}
-		)
-	}, [])
+		);
+	}, []);
 
 	return (
-		<div className={`flex flex-col gap-2 py-10 ${className ?? ""}`}>
-			<h1
+		<div
+			className={[
+				"flex flex-col items-start",
+				"gap-0 mb-10 md:mb-14",
+				className ?? "",
+			]
+				.filter(Boolean)
+				.join(" ")}
+		>
+			{eyebrow && (
+				<div className="mb-3">
+					<Eyebrow>{eyebrow}</Eyebrow>
+				</div>
+			)}
+
+			<Tag
 				ref={titleRef}
-				className="flex items-center gap-2 m-0 text-text"
+				className="m-0 flex items-center gap-3 text-title font-semibold tracking-tight text-text"
 			>
 				<Icon
-					className="text-accent"
-					size={50}
+					className="hidden shrink-0 text-accent sm:block"
+					size={32}
 					strokeWidth={2}
 					aria-hidden="true"
 				/>
 
 				<span>{title}</span>
-			</h1>
+			</Tag>
 
 			{description && (
-				<p className="text-text-muted text-base m-0">
+				<p className="mt-4 mb-0 max-w-[62ch] text-base leading-relaxed text-text-muted sm:text-lg">
 					{description}
 				</p>
 			)}
 		</div>
-	)
+	);
 }

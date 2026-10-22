@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 
 /* =========================================
@@ -10,10 +9,13 @@
 	--font-family-base: "Inter";
 	--font-family-fallback: "Segoe UI", Arial, sans-serif;
 
+	--font-family-mono: "JetBrains Mono";
+	--font-family-mono-fallback: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
 	--font-body: var(--font-family-base), var(--font-family-fallback);
 	--font-display: var(--font-body);
 	--font-ui: var(--font-body);
-	--font-mono: "Courier New", monospace;
+	--font-mono: var(--font-family-mono), var(--font-family-mono-fallback);
 
 	/* Typography scale */
 	--font-size-base: 16px;
@@ -28,15 +30,22 @@
 }
 
 /* =========================================
-   2. LOCAL INTER VARIABLE FONT
-   File: public/fonts/Inter-VariableFont_opsz,wght.ttf
+   2. LOCAL VARIABLE FONTS
    ========================================= */
 
 @font-face {
 	font-family: "Inter";
-	src: url("/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+	src: url("/Inter-Variable.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("/JetBrainsMono-Variable.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 100 800;
 	font-display: swap;
 }
 
@@ -47,7 +56,8 @@
 @theme {
 	--font-body: var(--font-family-base), var(--font-family-fallback);
 	--font-display: var(--font-family-base), var(--font-family-fallback);
-	--font-mono: "Courier New", monospace;
+	--font-ui: var(--font-family-base), var(--font-family-fallback);
+	--font-mono: var(--font-family-mono), var(--font-family-mono-fallback);
 
 	--color-text: var(--text);
 	--color-text-muted: var(--text-muted);
@@ -61,6 +71,28 @@
 	--color-accent-soft: var(--accent-soft);
 	--color-accent-border: var(--accent-border);
 	--color-accent-glow: var(--accent-glow);
+	--color-accent-text: var(--accent-text);
+}
+
+/* "static" para que Tailwind emita estas variables aunque
+   solo se usen desde CSS plano (h1, h2, h3). */
+@theme static {
+	--text-display: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
+	--text-display--line-height: 1.05;
+
+	--text-title: clamp(1.75rem, 1.25rem + 1.6vw, 2.5rem);
+	--text-title--line-height: 1.15;
+
+	--text-heading: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+	--text-heading--line-height: 1.3;
+
+	--text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+	--text-lead--line-height: 1.6;
+
+	--text-eyebrow: 0.75rem;
+	--text-eyebrow--line-height: 1;
+
+	--spacing-section: clamp(4.5rem, 9vw, 8rem);
 }
 
 /* =========================================
@@ -81,6 +113,9 @@
 	--accent: #d71920;
 	--accent-hover: #f02a32;
 	--accent-contrast: #ffffff;
+
+	/* Rojo más claro para texto pequeño (mejor contraste sobre negro) */
+	--accent-text: #f02a32;
 
 	/* Extended accent colors */
 	--accent-soft: rgba(215, 25, 32, 0.12);
@@ -109,13 +144,15 @@
 	--accent-hover: #b9141b;
 	--accent-contrast: #ffffff;
 
+	--accent-text: #d71920;
+
 	/* Extended accent colors */
 	--accent-soft: rgba(215, 25, 32, 0.07);
 	--accent-border: rgba(215, 25, 32, 0.32);
 	--accent-glow: rgba(215, 25, 32, 0.1);
 
 	--page-background-color: #ffffff;
-	--page-background-accent: #f4f2f2;
+	--page-background-accent: #f8f6f6;
 }
 
 /* =========================================
@@ -126,11 +163,11 @@
 :root,
 [data-theme="dark"],
 [data-theme="light"] {
-	--page-background: repeating-linear-gradient(
-		45deg,
-		var(--page-background-color),
-		var(--page-background-color) 2rem,
-		var(--page-background-accent) 20rem
+	--page-background: linear-gradient(
+		135deg,
+		var(--page-background-color) 0%,
+		var(--page-background-accent) 50%,
+		var(--page-background-color) 100%
 	);
 }
 
@@ -211,67 +248,83 @@ body {
 
 /* =========================================
    10. FORMS AND INTERACTIVE ELEMENTS
+   (en @layer base para que las utilidades
+   de Tailwind, como text-white, puedan ganar)
    ========================================= */
 
-button,
-input,
-textarea,
-select {
-	font-family: var(--font-ui);
-	font-size: inherit;
-}
+@layer base {
+	button,
+	input,
+	textarea,
+	select {
+		font-family: var(--font-ui);
+		font-size: inherit;
+	}
 
-button {
-	color: inherit;
-	accent-color: var(--accent);
-}
+	button {
+		color: inherit;
+		accent-color: var(--accent);
+	}
 
-input,
-textarea,
-select {
-	accent-color: var(--accent);
-}
+	input,
+	textarea,
+	select {
+		accent-color: var(--accent);
+	}
 
-a {
-	color: inherit;
+	a {
+		color: inherit;
+	}
 }
 
 /* =========================================
    11. HEADINGS
    ========================================= */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: var(--font-display);
-	font-synthesis: none;
-	line-height: var(--line-height-heading);
-	text-wrap: balance;
-	color: var(--text);
-}
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		font-synthesis: none;
+		line-height: var(--line-height-heading);
+		text-wrap: balance;
+		color: var(--text);
+	}
 
-h1 {
-	font-size: 2.5rem;
-	font-weight: var(--font-weight-semibold);
-}
+	h1 {
+		font-size: var(--text-display);
+		line-height: var(--text-display--line-height);
+		letter-spacing: -0.02em;
+		font-weight: var(--font-weight-semibold);
+	}
 
-h2 {
-	font-weight: var(--font-weight-semibold);
-}
+	h2 {
+		font-size: var(--text-title);
+		line-height: var(--text-title--line-height);
+		letter-spacing: -0.015em;
+		font-weight: var(--font-weight-semibold);
+	}
 
-h3,
-h4,
-h5,
-h6 {
-	font-weight: var(--font-weight-medium);
-}
+	h3 {
+		font-size: var(--text-heading);
+		line-height: var(--text-heading--line-height);
+		font-weight: var(--font-weight-medium);
+	}
 
-strong,
-b {
-	font-weight: var(--font-weight-semibold);
+	h4,
+	h5,
+	h6 {
+		font-weight: var(--font-weight-medium);
+	}
+
+	strong,
+	b {
+		font-weight: var(--font-weight-semibold);
+	}
 }
 
 /* =========================================
@@ -292,9 +345,19 @@ svg {
 	background: var(--accent);
 }
 
-:focus-visible {
-	outline: 2px solid var(--accent);
-	outline-offset: 4px;
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 4px;
+	}
+}
+
+/* Campos de formulario: sin offset, para no duplicar
+   el indicador de foco con el borde de la card */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline-offset: 0;
 }
 
 /* =========================================

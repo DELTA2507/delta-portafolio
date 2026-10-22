@@ -1,75 +1,41 @@
 ---
-import AnimatedTitle from "../components/AnimatedHeading.tsx"
+import AnimatedHeading from "../components/AnimatedHeading.tsx";
+import AboutCard from "../components/AboutCard.tsx";
 import SectionContainer from "../components/SectionContainer.astro";
-import { User } from "lucide-react";
 ---
 
-<SectionContainer id="about" class="border-t border-border">
-    <div class="max-w-6xl mx-auto px-6">
-        <AnimatedTitle
-            title="Acerca de mí"
-            description="Mi Enfoque, Filosofía, Fortalezas y el valor que aporto a cada proyecto."
-            icon="about"
-            className="justify-center"
-            client:load
-        />
+<SectionContainer id="about">
+	<AnimatedHeading
+		eyebrow="CONOCE CÓMO TRABAJO"
+		title="Acerca de mí"
+		description="Mi enfoque, filosofía y fortalezas, y el valor que puedo aportar a cada proyecto."
+		icon="about"
+		client:load
+	/>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-16">
-            <div class="bg-surface border border-border rounded-2xl p-6 md:p-8">
-                <span class="text-accent text-sm font-semibold uppercase tracking-widest">
-                    Filosofía
-                </span>
-                <h3 class="text-2xl font-bold text-text mt-3 mb-3">
-                    Diseño con intención.
-                </h3>
-                <p class="text-text-muted leading-relaxed">
-                    Cada decisión debe tener un propósito. Busco crear soluciones
-                    claras, intuitivas y sostenibles, donde el diseño y la tecnología
-                    trabajen juntos en lugar de competir.
-                </p>
-            </div>
+	<div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+		<AboutCard
+			eyebrow="Filosofía"
+			title="Diseño con intención."
+			description="Cada decisión debe tener un propósito. Busco crear soluciones claras, intuitivas y sostenibles, donde el diseño y la tecnología trabajen juntos en lugar de competir."
+		/>
 
-            <div class="bg-surface border border-border rounded-2xl p-6 md:p-8">
-                <span class="text-accent text-sm font-semibold uppercase tracking-widest">
-                    Especialidad
-                </span>
-                <h3 class="text-2xl font-bold text-text mt-3 mb-3">
-                    Experiencias que funcionan.
-                </h3>
-                <p class="text-text-muted leading-relaxed">
-                    Desarrollo interfaces modernas y sistemas web enfocados en
-                    rendimiento, usabilidad y una experiencia que se sienta tan bien
-                    como funciona.
-                </p>
-            </div>
+		<AboutCard
+			eyebrow="Especialidad"
+			title="Experiencias que funcionan."
+			description="Desarrollo interfaces modernas y sistemas web enfocados en rendimiento, usabilidad y una experiencia que se sienta tan bien como funciona."
+		/>
 
-            <div class="bg-surface border border-border rounded-2xl p-6 md:p-8">
-                <span class="text-accent text-sm font-semibold uppercase tracking-widest">
-                    Mentalidad
-                </span>
-                <h3 class="text-2xl font-bold text-text mt-3 mb-3">
-                    Siempre hay una mejor solución.
-                </h3>
-                <p class="text-text-muted leading-relaxed">
-                    No me conformo con hacer que algo funcione. Busco entender el
-                    problema, cuestionar lo innecesario y encontrar soluciones que
-                    sean simples, eficientes y fáciles de mantener.
-                </p>
-            </div>
+		<AboutCard
+			eyebrow="Mentalidad"
+			title="Siempre hay una mejor solución."
+			description="No me conformo con hacer que algo funcione. Busco entender el problema, cuestionar lo innecesario y encontrar soluciones que sean simples, eficientes y fáciles de mantener."
+		/>
 
-            <div class="bg-surface border border-border rounded-2xl p-6 md:p-8">
-                <span class="text-accent text-sm font-semibold uppercase tracking-widest">
-                    En un equipo
-                </span>
-                <h3 class="text-2xl font-bold text-text mt-3 mb-3">
-                    Aporto criterio, no solo código.
-                </h3>
-                <p class="text-text-muted leading-relaxed">
-                    Puedo involucrarme desde la idea hasta la implementación, aportar
-                    criterio técnico y de producto, y convertir problemas complejos en
-                    soluciones que el equipo pueda construir y mantener.
-                </p>
-            </div>
-        </div>
-    </div>
+		<AboutCard
+			eyebrow="En un equipo"
+			title="Aporto criterio, no solo código."
+			description="Puedo involucrarme desde la idea hasta la implementación, aportar criterio técnico y de producto, y convertir problemas complejos en soluciones que el equipo pueda construir y mantener."
+		/>
+	</div>
 </SectionContainer>

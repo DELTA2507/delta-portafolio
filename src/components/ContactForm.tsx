@@ -6,6 +6,12 @@ const encode = (text: string) => encodeURIComponent(text);
 const makeMailto = (email: string, subject: string, body: string) =>
 	`mailto:${email}?subject=${encode(subject)}&body=${encode(body)}`;
 
+const field =
+	"rounded-lg border border-border bg-background/50 px-4 py-3 transition-colors focus-within:border-accent";
+const label = "mb-1 block text-sm text-text-muted";
+const control =
+	"w-full border-0 bg-transparent p-0 text-base text-text placeholder:text-text-muted/60 focus:outline-none";
+
 export default function ContactForm() {
 	function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -25,24 +31,21 @@ export default function ContactForm() {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="w-full flex flex-col gap-5 border border-border rounded-xl p-6 md:p-7"
+			className="flex w-full flex-col gap-6 rounded-2xl border border-border bg-surface p-6 sm:p-8"
 		>
-			<div>
-				<h3 className="text-lg font-semibold text-text">
+			<div className="flex flex-col gap-1.5">
+				<h3 className="m-0 text-heading font-semibold text-text">
 					Envíame un mensaje
 				</h3>
 
-				<p className="mt-1 text-sm text-text-muted">
+				<p className="m-0 text-base text-text-muted">
 					Contame un poco sobre tu idea o proyecto.
 				</p>
 			</div>
 
-			<div className="flex flex-col gap-3">
-				<div className="border border-border/70 rounded-md px-3.5 py-3 focus-within:border-accent transition-colors">
-					<label
-						htmlFor="subject"
-						className="block text-xs text-text-muted mb-1"
-					>
+			<div className="flex flex-col gap-4">
+				<div className={field}>
+					<label htmlFor="subject" className={label}>
 						Asunto
 					</label>
 
@@ -52,15 +55,12 @@ export default function ContactForm() {
 						type="text"
 						placeholder="¿En qué podemos trabajar?"
 						required
-						className="w-full bg-transparent border-0 p-0 text-sm text-text placeholder:text-text-muted/50 focus:outline-none"
+						className={control}
 					/>
 				</div>
 
-				<div className="border border-border/70 rounded-md px-3.5 py-3 focus-within:border-accent transition-colors">
-					<label
-						htmlFor="message"
-						className="block text-xs text-text-muted mb-1"
-					>
+				<div className={field}>
+					<label htmlFor="message" className={label}>
 						Mensaje
 					</label>
 
@@ -70,7 +70,7 @@ export default function ContactForm() {
 						rows={5}
 						placeholder="Contame sobre tu idea, proyecto o necesidad..."
 						required
-						className="w-full bg-transparent border-0 p-0 text-sm text-text placeholder:text-text-muted/50 resize-none focus:outline-none"
+						className={`${control} resize-none`}
 					/>
 				</div>
 			</div>
@@ -78,15 +78,10 @@ export default function ContactForm() {
 			<div className="flex justify-end">
 				<button
 					type="submit"
-					className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-medium rounded-md hover:brightness-110 transition cursor-pointer"
+					className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-medium text-accent-contrast transition-colors hover:bg-accent-hover"
 				>
 					Enviar
-
-					<ArrowRight
-						size={16}
-						strokeWidth={2}
-						aria-hidden="true"
-					/>
+					<ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
 				</button>
 			</div>
 		</form>

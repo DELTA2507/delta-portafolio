@@ -1,82 +1,96 @@
 interface ExperienceEventProps {
-  role: string;
-  place: string;
-  placeLogo?: string;
-  link?: string;
-  date: string;
-  stack: string[];
-  description: string;
+	role: string;
+	place: string;
+	placeLogo?: string;
+	link?: string;
+	date: string;
+	stack: string[];
+	description: string;
 }
 
 export default function ExperienceEvent({
-  role,
-  place,
-  placeLogo,
-  link,
-  date,
-  stack,
-  description
+	role,
+	place,
+	placeLogo,
+	link,
+	date,
+	stack,
+	description,
 }: ExperienceEventProps) {
-  return (
-    <li className="mb-10 ms-6">
-      <div
-        className="absolute w-0 h-0 mt-1.5 -start-1.5
-        border-l-[10px] border-l-transparent
-        border-r-[10px] border-r-transparent
-        border-b-[18px] border-b-accent
-        rotate-90"
-      />
+	const logoClass = "h-15 w-44 object-contain object-left";
 
-      <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-        <div className="md:flex-1">
-          <h3 className="text-2xl font-semibold text-accent break-words md:whitespace-normal">
-            {role}
-          </h3>
+	return (
+		<article className="min-w-0">
+			<div className="grid grid-cols-1 gap-5 md:grid-cols-[1.15fr_1fr] md:gap-14">
+				<div className="flex min-w-0 flex-col items-start gap-4">
+					<h3 className="m-0 break-words text-heading font-semibold text-text">
+						{role}
+					</h3>
 
-          {placeLogo ? (
-            <a
-              href={link}
-              className="block w-36 max-w-full aspect-[3/1] mt-2 hover:scale-110 transition-all ease-in-out"
-            >
-              <img
-                src={placeLogo}
-                alt={place}
-                className="w-full h-full object-contain"
-              />
-            </a>
-          ) : (
-            <a
-              href={link}
-              className="text-xl font-semibold text-text"
-            >
-              {place}
-            </a>
-          )}
+					{placeLogo ? (
+						link ? (
+							<a
+								href={link}
+								aria-label={place}
+								className="block w-fit transition-opacity hover:opacity-80"
+							>
+								<img
+									src={placeLogo}
+									alt={place}
+									loading="lazy"
+									decoding="async"
+									className={logoClass}
+								/>
+							</a>
+						) : (
+							<img
+								src={placeLogo}
+								alt={place}
+								loading="lazy"
+								decoding="async"
+								className={logoClass}
+							/>
+						)
+					) : link ? (
+						<a
+							href={link}
+							className="break-words text-base font-semibold text-text transition-colors hover:text-accent"
+						>
+							{place}
+						</a>
+					) : (
+						<p className="m-0 break-words text-base font-semibold text-text">
+							{place}
+						</p>
+					)}
 
-          <br />
+					<time className="text-sm text-text-muted">{date}</time>
 
-          <time className="mb-1 text-sm font-normal leading-none text-text-muted">
-            {date}
-          </time>
+					{stack.length > 0 && (
+						<ul
+							aria-label="Tecnologías utilizadas"
+							className="m-0 flex list-none flex-wrap items-center gap-3 p-0"
+						>
+							{stack.map((stackIcon) => (
+								<li key={stackIcon} className="list-none">
+									<img
+										src={`/stack-icons/${stackIcon}.svg`}
+										alt={stackIcon}
+										title={stackIcon}
+										loading="lazy"
+										decoding="async"
+										className="size-8 rounded-sm object-contain"
+									/>
+								</li>
+							))}
+						</ul>
+					)}
+				</div>
 
-          <div className="flex gap-2 mt-2">
-            {stack.map((stackIcon) => (
-              <img
-                key={stackIcon}
-                className="w-8 h-8 rounded-sm"
-                src={`/stack-icons/${stackIcon}.svg`}
-                alt={stackIcon}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="md:w-1/2">
-          <p className="text-base font-normal text-text-muted">
-            {description}
-          </p>
-        </div>
-      </div>
-    </li>
-  );
+				<p className="m-0 max-w-[58ch] text-base leading-relaxed text-text-muted md:pt-0.5">
+					{description}
+				</p>
+			</div>
+		</article>
+	);
 }

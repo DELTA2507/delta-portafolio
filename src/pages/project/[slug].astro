@@ -35,37 +35,41 @@ const { frontmatter, default: Content } = file as {
 ---
 
 <ProjectSlugLayout title={frontmatter.title}>
-  <div class="max-w-full mx-auto px-20 py-12">
+  <div class="mx-auto w-full max-w-6xl px-5 pt-28 pb-section sm:px-8 sm:pt-32 lg:px-10">
 
-    <Breadcrumbs
-      paths={[
-        { name: "Inicio", href: "/" },
-        { name: frontmatter.slug },
-      ]}
-    />
-
-    <div class="flex flex-row items-center justify-between gap-4 mb-8">
-      <h1 class="text-4xl sm:text-5xl font-bold break-words text-text">
-        {frontmatter.title}
-      </h1>
-
-      <img
-        class="w-15 lg:w-20 self-start sm:self-center"
-        src={frontmatter.ownerLogo}
-        alt="Owner Logo"
+    <div class="mb-8 md:mb-10">
+      <Breadcrumbs
+        paths={[
+          { name: "Inicio", href: "/" },
+          { name: frontmatter.slug },
+        ]}
       />
     </div>
 
-    <div class="project-detail-container grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="mb-10 flex items-start justify-between gap-6 md:mb-14">
+      <h1 class="m-0 break-words text-title font-semibold tracking-tight text-text">
+        {frontmatter.title}
+      </h1>
 
-      <div class="project-main lg:col-span-2 flex flex-col gap-6">
+      {frontmatter.ownerLogo && (
+        <img
+          class="size-12 shrink-0 rounded-lg object-contain sm:size-16"
+          src={frontmatter.ownerLogo}
+          alt="Owner Logo"
+        />
+      )}
+    </div>
+
+    <div class="project-detail-container grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_22rem]">
+
+      <div class="project-main flex min-w-0 flex-col gap-10 md:gap-12">
 
         <Carousel
           projectImages={frontmatter.images}
           client:load
         />
 
-        <div class="project-cta bg-surface/80 backdrop-blur-xl rounded-2xl p-6 flex flex-col gap-4 lg:hidden">
+        <div class="project-cta flex flex-col gap-4 rounded-2xl border border-border bg-surface/80 p-5 backdrop-blur-xl lg:hidden">
           {frontmatter.link && (
             <a
               href={frontmatter.link}
@@ -74,51 +78,50 @@ const { frontmatter, default: Content } = file as {
               class="cta-link inline-flex items-center justify-center"
             >
               Visitar proyecto
-              <ExternalLink
-                size={18}
-                class="ml-2"
-                aria-hidden="true"
-              />
+              <ExternalLink size={18} class="ml-2" aria-hidden="true" />
             </a>
           )}
         </div>
 
         {frontmatter.stack && frontmatter.stack.length > 0 && (
-          <>
-            <h2 class="font-semibold text-3xl text-text">
+          <section class="flex flex-col gap-5">
+            <h2 class="m-0 scroll-mt-28 text-heading font-semibold text-text">
               Stack utilizado
             </h2>
 
-            <div class="project-stack bg-surface/80 border border-border/80 backdrop-blur-xl rounded-2xl p-5 flex flex-wrap gap-2">
-              <div class="flex gap-5">
-                {frontmatter.stack.map((stackIcon) => (
-                  <img
-                    class="w-10 h-10 transition-transform duration-300"
-                    src={`/stack-icons/${stackIcon}.svg`}
-                    alt={stackIcon}
-                  />
-                ))}
-              </div>
+            <div class="project-stack flex flex-wrap items-center gap-x-5 gap-y-4 rounded-2xl border border-border bg-surface/80 p-5 backdrop-blur-xl sm:p-6">
+              {frontmatter.stack.map((stackIcon) => (
+                <img
+                  class="size-9 object-contain sm:size-10"
+                  src={`/stack-icons/${stackIcon}.svg`}
+                  alt={stackIcon}
+                  title={stackIcon}
+                  loading="lazy"
+                />
+              ))}
             </div>
-          </>
+          </section>
         )}
 
-        <div class="markdown-content prose prose-invert max-w-4xl text-lg lg:text-xl">
+        <div class="markdown-content prose prose-invert max-w-[68ch] text-base leading-relaxed sm:text-lg [&_h2]:scroll-mt-28 [&_h3]:scroll-mt-28">
           <Content />
         </div>
       </div>
 
-      <div class="project-sidebar hidden lg:col-span-1 lg:flex flex-col">
-        <div class="lg:sticky top-6 flex flex-col gap-6">
+      <aside class="project-sidebar hidden lg:block">
+        <div class="flex flex-col gap-6 lg:sticky lg:top-28">
 
-          <div class="project-logo rounded-xl overflow-hidden py-10">
-            <img
-              src={frontmatter.projectLogo}
-              alt="Project Logo"
-            />
-          </div>
+          {frontmatter.projectLogo && (
+            <div class="project-logo overflow-hidden rounded-xl">
+              <img
+                class="block h-auto w-full"
+                src={frontmatter.projectLogo}
+                alt="Project Logo"
+              />
+            </div>
+          )}
 
-          <div class="project-cta bg-surface/80 backdrop-blur-xl rounded-2xl p-6 flex flex-col gap-4">
+          <div class="project-cta flex flex-col gap-4 rounded-2xl border border-border bg-surface/80 p-5 backdrop-blur-xl">
             {frontmatter.link && (
               <a
                 href={frontmatter.link}
@@ -127,11 +130,7 @@ const { frontmatter, default: Content } = file as {
                 class="cta-link inline-flex items-center justify-center"
               >
                 Visitar proyecto
-                <ExternalLink
-                  size={18}
-                  class="ml-2"
-                  aria-hidden="true"
-                />
+                <ExternalLink size={18} class="ml-2" aria-hidden="true" />
               </a>
             )}
           </div>
@@ -139,7 +138,7 @@ const { frontmatter, default: Content } = file as {
           <TableOfContents client:load />
 
         </div>
-      </div>
+      </aside>
 
     </div>
   </div>

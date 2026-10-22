@@ -17,7 +17,7 @@ const {
   type = "project",
 } = Astro.props;
 
-// Máximo 4 destacados: 1 grande + 1 segundo destacado + 2 pequeños
+// Máximo 4 destacados: 1 grande + 1 ancho + 2 pequeños
 const featuredItems = featured
   .slice(0, 4)
   .map((slug) => items.find((item) => item.slug === slug))
@@ -25,63 +25,63 @@ const featuredItems = featured
 
 function getCardClasses(index: number) {
   if (index === 0) {
-    // Grande: ocupa 2 columnas x 2 filas
-    return "lg:col-span-2 lg:row-span-2 min-h-[500px]";
+    return "min-h-[320px] md:col-span-2 md:min-h-[380px] lg:row-span-2 lg:min-h-0";
   }
   if (index === 1) {
-    // Segundo destacado: ocupa 2 columnas, 1 fila (mismo ancho que los 2 pequeños juntos)
-    return "lg:col-span-2 lg:row-span-1 min-h-[240px]";
+    return "min-h-[260px] md:col-span-2";
   }
-  // Pequeños: 1 columna cada uno
-  return "lg:col-span-1 lg:row-span-1 min-h-[240px]";
+  return "min-h-[260px]";
 }
 
 function getTitleClasses(index: number) {
-  if (index === 0) return "text-4xl";
-  if (index === 1) return "text-3xl";
-  return "text-2xl";
+  return index === 0 ? "text-title" : "text-heading";
 }
 ---
 
 {featuredItems.length > 0 && (
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:auto-rows-[minmax(250px,auto)]">
     {featuredItems.map((item, index) => (
       <a
         href={`/${type === "project" ? "project" : "blog"}/${item.slug}`}
         class:list={[
-          "group relative overflow-hidden rounded-2xl border border-border bg-surface",
+          "group relative isolate overflow-hidden rounded-2xl border border-border bg-surface",
           getCardClasses(index),
         ]}
       >
         <img
           src={type === "project" ? item.images?.[0] : item.cover}
-          alt={item.title}
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          alt=""
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
-        <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
+        {/* Gradiente solo en la parte baja: la imagen se ve limpia arriba */}
+        <div class="absolute inset-0 bg-linear-to-t from-black/85 via-black/35 via-45% to-transparent" />
 
-        <div class="absolute inset-x-0 bottom-0 p-6">
-          <h3 class:list={["font-bold text-white", getTitleClasses(index)]}>
+        <div class="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-5 sm:p-6 lg:p-7">
+          <h3 class:list={["m-0 font-semibold tracking-tight text-white", getTitleClasses(index)]}>
             {item.title}
           </h3>
 
+          {index === 0 && (
+            <p class="m-0 max-w-[52ch] text-sm leading-relaxed text-white/80 line-clamp-2 sm:text-base">
+              {item.shortDescription ?? item.summary}
+            </p>
+          )}
+
           {type === "project" && item.stack?.length > 0 && (
-            <div class="flex gap-2 mt-3">
+            <div class="flex flex-wrap items-center gap-2.5">
               {item.stack.map((stackIcon: string) => (
                 <img
                   src={`/stack-icons/${stackIcon}.svg`}
                   alt={stackIcon}
-                  class="w-7 h-7 rounded-sm transition-transform duration-300 group-hover:scale-105"
+                  title={stackIcon}
+                  loading="lazy"
+                  class="size-7 rounded-sm object-contain"
                 />
               ))}
             </div>
-          )}
-
-          {index === 0 && (
-            <p class="mt-2 text-sm text-white/70 line-clamp-2">
-              {item.shortDescription ?? item.summary}
-            </p>
           )}
         </div>
       </a>
@@ -90,10 +90,10 @@ function getTitleClasses(index: number) {
 )}
 
 {href && (
-  <div class="flex justify-center mt-8">
+  <div class="mt-10 flex justify-center">
     <a
       href={href}
-      class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white font-semibold hover:brightness-110 transition-all"
+      class="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-accent-contrast transition-all hover:brightness-110"
     >
       {ctaText}
       <ArrowRight size={18} aria-hidden="true" />

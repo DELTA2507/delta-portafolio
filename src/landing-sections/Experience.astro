@@ -3,10 +3,19 @@ import SectionContainer from "../components/SectionContainer.astro";
 import AnimatedStaggeredContainerExperience from "../components/AnimatedStaggeredContainerExperience";
 import AnimatedHeading from "../components/AnimatedHeading";
 import experience from "../data/experience";
-import { BriefcaseBusiness } from "lucide-react";
 ---
 
 <SectionContainer id="experience" class="bg-surface">
-	<AnimatedHeading title="Experiencia" description="Descubre mi experiencia laboral y profesional." icon="experience" client:load />
-	<AnimatedStaggeredContainerExperience experience={experience} client:load />
+	<AnimatedHeading
+		eyebrow="TRAYECTORIA PROFESIONAL"
+		title="Experiencia"
+		description="Un recorrido por mi experiencia laboral y profesional."
+		icon="experience"
+		client:load
+	/>
+
+	<AnimatedStaggeredContainerExperience
+		experience={experience}
+		client:load
+	/>
 </SectionContainer>

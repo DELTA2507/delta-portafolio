@@ -14,7 +14,20 @@ const { title = "Portafolio Joseph UM | Desarrollador Web e Ingeniero de Softwar
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link
+			rel="preload"
+			href="/Inter-Variable.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/JetBrainsMono-Variable.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
     <title>{title}</title>
   </head>
   <body>
