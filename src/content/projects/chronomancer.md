@@ -1,4 +1,5 @@
 ---
+category: WebApp
 title: Chronomancer
 slug: chronomancer
 projectLogo: /company-logos/delta-development-and-design.png

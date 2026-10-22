@@ -1,4 +1,5 @@
 ---
+category: Web
 title: PoligoLearn
 slug: poligolearn
 projectLogo: /company-logos/delta-development-and-design.png

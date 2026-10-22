@@ -1,4 +1,5 @@
 ---
+category: WebApp
 title: Sonelier
 slug: sonelier
 projectLogo: /company-logos/delta-development-and-design.png

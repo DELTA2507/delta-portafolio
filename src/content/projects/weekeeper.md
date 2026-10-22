@@ -1,4 +1,5 @@
 ---
+category: WebApp
 title: weeKeeper
 slug: weekeeper
 projectLogo: /company-logos/delta-development-and-design.png

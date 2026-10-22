@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Trending from "../components/Trending.astro";
-import AnimatedStaggeredContainerCards from "../components/AnimatedStaggeredContainerCards";
+import FilterableCards from "../components/FilterableCards";
+import AnimatedHeading from "../components/AnimatedHeading";
 import { featuredArticles } from "../data/featuredArticles";
 
 const articlePages = import.meta.glob("../content/articles/*.md", { eager: true });
@@ -9,21 +10,15 @@ const articles = Object.values(articlePages).map((file: any) => file.frontmatter
 ---
 
 <Layout>
-  <main class="max-w-7xl mx-auto px-4 py-12">
-    <header class="mb-12">
-      <p class="text-sm font-semibold uppercase tracking-widest text-accent">
-        Blog
-      </p>
-
-      <h1 class="mt-2 text-5xl font-bold text-text">
-        Ideas, tecnología y desarrollo
-      </h1>
-
-      <p class="mt-4 max-w-2xl text-lg text-text-muted">
-        Artículos sobre desarrollo de software, diseño, tecnología y las cosas
-        que voy aprendiendo en el camino.
-      </p>
-    </header>
+  <main class="mx-auto w-full max-w-6xl px-5 pt-28 pb-section sm:px-8 sm:pt-32 lg:px-10">
+    <AnimatedHeading
+      as="h1"
+      eyebrow="BLOG"
+      title="Ideas, tecnología y desarrollo"
+      description="Artículos sobre desarrollo de software, diseño, tecnología y las cosas que voy aprendiendo en el camino."
+      icon="blog"
+      client:load
+    />
 
     <Trending
       type="article"
@@ -31,50 +26,22 @@ const articles = Object.values(articlePages).map((file: any) => file.frontmatter
       featured={featuredArticles}
     />
 
-    <section class="mt-16 pt-10 border-t border-border">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-widest text-accent">
-            Archivo
-          </p>
+    <section class="mt-section border-t border-border pt-12 md:pt-16">
+      <div class="mb-10 md:mb-12">
+        <p class="mb-3 font-mono text-eyebrow uppercase tracking-[0.14em] text-accent">
+          Archivo
+        </p>
 
-          <h2 class="mt-1 text-3xl font-bold text-text">
-            Más artículos
-          </h2>
+        <h2 class="m-0 text-title font-semibold tracking-tight text-text">
+          Más artículos
+        </h2>
 
-          <p class="mt-2 text-text-muted">
-            Explora todos los artículos publicados.
-          </p>
-        </div>
-
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            class="px-4 py-2 rounded-lg bg-surface border border-border text-text text-sm font-medium"
-          >
-            Todos
-          </button>
-
-          <button
-            type="button"
-            class="px-4 py-2 rounded-lg bg-surface border border-border text-text-muted text-sm font-medium hover:text-text transition-colors"
-          >
-            Desarrollo
-          </button>
-
-          <button
-            type="button"
-            class="px-4 py-2 rounded-lg bg-surface border border-border text-text-muted text-sm font-medium hover:text-text transition-colors"
-          >
-            Tecnología
-          </button>
-        </div>
+        <p class="mt-4 mb-0 max-w-[52ch] text-base leading-relaxed text-text-muted">
+          Explora todos los artículos publicados.
+        </p>
       </div>
 
-      <AnimatedStaggeredContainerCards
-        articles={articles}
-        client:load
-      />
+      <FilterableCards type="article" items={articles} client:load />
     </section>
   </main>
 </Layout>

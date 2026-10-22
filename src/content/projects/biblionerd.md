@@ -1,5 +1,6 @@
 ---
 {
+  category: "WebApp",
   "title": "Biblionerd",
   "slug": "biblionerd",
   "projectLogo": "/project-logos/biblionerd.svg",

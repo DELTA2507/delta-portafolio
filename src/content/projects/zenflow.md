@@ -1,4 +1,5 @@
 ---
+category: WebApp
 title: Project "ZenFlow"
 slug: zenflow
 projectLogo: /company-logos/delta-development-and-design.png

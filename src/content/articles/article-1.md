@@ -1,4 +1,5 @@
 ---
+category: Tech
 slug: article-1
 title: Noticia asombrosa Lorem ipsum dolor sit amet
 cover: /blogCovers/example-article.png

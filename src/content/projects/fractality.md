@@ -1,5 +1,6 @@
 ---
 {
+  "category": "Web",
   "title": "Fractality",
   "slug": "fractality",
   "projectLogo": "/project-logos/fractality.svg",
